@@ -1,0 +1,47 @@
+{{define "header1"}}
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/images/favicon.ico">        <title>{{.pageTitle}} -  {{.user.BlogName}}</title>
+        <meta name="keywords"
+              content="go,go教程,go文档,go教学,学习,go语言教程,go语言入门,视频教程,程序员,golang,go语言,李科,like,python,django,小程序,blog,博客,js,vue,">
+        <meta name="description" content="不会真有人会点进来看吧。">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+        <link rel="stylesheet" href="/static/css/typo.css">
+        <link rel="stylesheet" href="/static/css/animate.css">
+        <link rel="stylesheet" href="/static/lib/prism/prism.css">
+        <link rel="stylesheet" href="/static/lib/tocbot/tocbot.css">
+        <link rel="stylesheet" href="/static/css/me.css">
+
+    </head>
+    <body>
+
+    <!--导航-->
+    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui teal header item">{{.user.BlogName}}</h2>
+                <a href="/" class="{{.active1}} m-item item m-mobile-hide"><i class="mini home icon"></i>&nbsp;&nbsp;首页</a>
+{{/*                <a href="/types" class="{{.active2}} m-item item m-mobile-hide"><i*/}}
+{{/*                            class="mini idea icon"></i>&nbsp;&nbsp;分类</a>*/}}
+{{/*                <a href="/tags" class="{{.active3}} m-item item m-mobile-hide"><i*/}}
+{{/*                            class="mini tags icon"></i>&nbsp;&nbsp;标签</a>*/}}
+                <a href="/archives" class="{{.active4}} m-item item m-mobile-hide"><i class="mini clone icon"></i>&nbsp;&nbsp;归档</a>
+                <a href="/about" class="{{.active5}} m-item item m-mobile-hide"><i class="mini info icon"></i>&nbsp;&nbsp;关于我</a>
+                <div class="right m-item item m-mobile-hide">
+                    <form name="search" action="/research" method="post">
+                        <div class="ui icon inverted transparent input m-margin-tb-tiny">
+                            <input type="text" name="title" placeholder="Search....">
+                            <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+{{end}}

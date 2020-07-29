@@ -1,0 +1,116 @@
+{{define "admin/tags.html"}}
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="admin/_fragments :: head(~{::title})">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>标签管理</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+        <link rel="stylesheet" href="/static/css/me.css">
+    </head>
+    <body>
+    <!--导航-->
+    {{template "header" .}}
+
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="/admin/tag/add" class="item">新增</a>
+                <a href="#" class="teal active item">列表</a>
+            </div>
+        </div>
+    </div>
+
+    <!--中间内容-->
+    <div class="m-container-small m-padded-tb-big">
+        <div class="ui container">
+            {{if .msg }}
+                <div class="ui success message">
+                    <i class="close icon"></i>
+                    <div class="header">提示：</div>
+                    <p>{{.msg}}</p>
+                </div>
+            {{else}}
+
+            {{end}}
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>名称</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+
+                <tbody>
+                {{$page := .page}}
+                {{range $index,$name:=.all}}
+                    <tr>
+                        <td>{{$name.Id}}</td>
+                        <td>{{$name.TagName}}</td>
+
+                        <td>
+                            <a href="/admin/tag/edit?page={{$page}}&id={{$name.Id}}&name={{$name.TagName}}"
+                               class="ui mini teal basic button">编辑</a>
+                            <a href="/admin/tag?page={{$page}}&id={{$name.Id}}"
+                               class="ui mini red basic button">删除</a>
+                        </td>
+                    </tr>
+                {{end}}
+                </tbody>
+
+
+                <tfoot>
+                <tr>
+                    <th colspan="6">
+                        <div class="ui mini pagination menu">
+                            {{if eq .page  1}}
+                            {{else}}
+                                <a href="/admin/tag?page={{.page|notAdd}}" class="  item" type=""
+                                >上一页</a>
+                            {{end}}
+                            {{if ge .count 10}}
+                                <a href="/admin/tag?page={{.page|add}}" class=" item"
+                                >下一页</a>
+                            {{else}}
+                            {{end}}
+{{/*                            {{if eq .page  1}}*/}}
+{{/*                                <a href="/admin/tag?page={{.page|add}}" class=" item"*/}}
+{{/*                                >下一页</a>*/}}
+{{/*                            {{else}}*/}}
+{{/*                            {{end}}*/}}
+                        </div>
+                        <a href="/admin/tag/add?page={{$page}}"
+                           class="ui mini right floated teal basic button">新增</a>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <!--底部footer-->
+    {{template "footer1" .}}
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+        //消息提示关闭初始化
+        $('.message .close')
+            .on('click', function () {
+                $(this)
+                    .closest('.message')
+                    .transition('fade');
+            });
+    </script>
+    </body>
+    </html>
+{{end}}

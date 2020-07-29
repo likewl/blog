@@ -1,0 +1,29 @@
+{{define "header"}}
+    <!--导航-->
+    <nav  class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui teal header item">管理后台</h2>
+                <a href="/admin/blog" class="{{.choice1}}  m-item item m-mobile-hide"><i class="mini home icon"></i>博客</a>
+                <a href="/admin/type" class="{{.choice2}} m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+                <a href="/admin/tag" class="{{.choice3}}  m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+                <div class="right m-item m-mobile-hide menu">
+                    <div class="ui dropdown  item">
+                        <div class="text">
+                            <img class="ui avatar image" src="{{.user.UserImg}}">
+                            {{.user.Name}}
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="/admin/user" class="item" >修改用户信息</a>
+                            <a href="/admin/logout" class="item" >注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+{{end}}

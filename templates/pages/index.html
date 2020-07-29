@@ -1,0 +1,177 @@
+{{define "pages/index.html"}}
+    {{template "header1" .}}
+    <!--中间内容-->
+    <div class="m-container m-padded-tb-big">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!--左边博客列表-->
+                <div class="eleven wide column">
+                    <!--header-->
+                    <div class="ui top attached segment">
+                        <div class="ui middle aligned two column grid">
+                            <div class="column">
+                                <h3 class="ui teal header">博文</h3>
+                            </div>
+                            <div class="right aligned column">
+                                共 <h2 class="ui orange header m-inline-block m-text-thin"> {{.numb}} </h2> 篇
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--content-->
+                    {{$name :=.user.Name}}
+                    {{$head :=.user.UserImg}}
+                    <div class="ui attached  segment">
+                        {{range $index,$blog:=.blog}}
+                            <div class="ui padded vertical segment m-padded-tb-large">
+                                <div class="ui mobile reversed stackable grid">
+                                    <div class="sixteen wide column">
+                                        <a href="/types/{{$blog.TypeName}}/{{$blog.Id}}" >
+                                        <h3 class="ui header">{{$blog.Title}}</h3>
+                                        </a>
+                                        <p class="m-text">{{$blog.Description}}</p>
+
+                                        <div class="ui grid">
+                                            <div class="eleven wide column">
+                                                <div class="ui mini horizontal link list">
+{{/*                                                    <div class="item">*/}}
+{{/*                                                        <img src="{{$head}}" alt=""*/}}
+{{/*                                                             class="ui avatar image">*/}}
+{{/*                                                        <div class="content"><a href="/about" class="header">{{$name}}</a>*/}}
+{{/*                                                        </div>*/}}
+{{/*                                                    </div>*/}}
+                                                    <div class="item">
+                                                        <i class="calendar icon"></i> {{$blog.UpdateTime}}
+                                                    </div>
+                                                    <div class="item">
+                                                        <i class="eye icon"></i> {{$blog.Numb}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="right aligned five wide column">
+                                                <a href="/types/{{$blog.TypeName}}" target="_blank"
+                                                   class="ui teal basic label m-padded-tiny m-text-thin">{{$blog.TypeName}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+{{/*                                    <div class="five wide column">*/}}
+{{/*                                        <a href="/types/{{$blog.TypeName}}/{{$blog.Id}}" target="_blank">*/}}
+{{/*                                            <img src="{{$blog.Image}}" alt="" class="ui rounded image">*/}}
+{{/*                                        </a>*/}}
+{{/*                                    </div>*/}}
+
+                                </div>
+                            </div>
+                        {{end}}
+
+
+                    </div>
+
+                    <!--footer-->
+                    <div class="ui bottom attached segment">
+                        <div class="ui middle aligned two column grid">
+                            <div class="column">
+                                {{if eq .page 1}}
+                                {{else }}
+                                <a href="/blogs/page/{{.page|notAdd}}" class="ui mini teal basic button">上一页</a>
+                                {{end}}
+                            </div>
+                            <div class="right aligned column">
+                                {{if lt .count 10}}
+                                {{else}}
+                                    <a href="/blogs/page/{{.page|add}}" class="ui mini teal basic button">下一页</a>
+                                {{end}}
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--右边的top-->
+                <div class="five wide column">
+                    <div class="ui top attached segment">
+                        <div class="ui header">关于{{.user.Name}}</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <p class="m-text">{{.user.Describe}}</p>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui orange basic left pointing label">编程</div>
+                        <div class="ui orange basic left pointing label">运动</div>
+                        <div class="ui orange basic left pointing label">旅游</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">Golang</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">Java</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">JavaScript</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">Python</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">MYSQL</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <a href="https://gitee.com/nculike/" target="_blank" class="ui circular icon button"><i class="github icon"></i></a>
+                        <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+                        <a href="#" class="ui qq circular icon button" data-content="535889315" data-position="bottom center"><i class="qq icon"></i></a>
+                    </div>
+                    <!--分类-->
+                    <div class="ui segments m-margin-top-large">
+                        <div class="ui secondary segment ">
+                            <i class="idea icon"></i>随机分类
+                        </div>
+                        {{range $index,$rand :=.type}}
+                            <div class="ui segment">
+                                <a href="/types/{{$rand.TypeName}}" target="_blank" class="m-black m-text-thin">{{$rand.TypeName}}</a>
+                            </div>
+                        {{end}}
+                    </div>
+                    <!--标签-->
+                    <div class="ui segments m-margin-top-large">
+                        <div class="ui secondary segment ">
+                            <i class="tags icon"></i>随机分类
+                        </div>
+                        <div class="ui attached segment">
+                            {{range $index,$rand2 :=.tag}}
+                                <a href="/tags/{{$rand2.TagName}}"  class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    {{$rand2.TagName}}
+                                </a>
+                            {{end}}
+                        </div>
+                    </div>
+
+                    <!--随机推荐-->
+                    <div class="ui segments m-margin-top-large">
+                        <div class="ui secondary segment ">
+                            <i class="bookmark icon"></i>随机文章
+                        </div>
+                        {{range $index,$rand3 :=.recommend}}
+                        <div class="ui segment">
+                            <a href="/types/{{$rand3.TypeName}}/{{$rand3.Id}}" target="_blank" class="m-black m-text-thin">{{$rand3.Title}}</a>
+                        </div>
+                        {{end}}
+                    </div>
+
+                    <!--二维码-->
+                    <h4 class="ui horizontal divider header m-margin-top-large">扫码关注我</h4>
+                    <div class="ui centered card" style="width: 11em">
+                        <img src="/static/images/wechat.jpg" alt="" class="ui rounded image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+    {{template "footer1" .}}
+
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+    </script>
+    </body>
+    </html>
+{{end}}

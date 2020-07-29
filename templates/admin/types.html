@@ -1,0 +1,104 @@
+{{define "admin/types.html"}}
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="admin/_fragments :: head(~{::title})">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>分类管理</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+        <link rel="stylesheet" href="/static/css/me.css">
+    </head>
+    <body>
+
+    <!--导航-->
+    {{template "header" .}}
+
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="/admin/type/add" class="item">新增</a>
+                <a href="#" class="teal active item">列表</a>
+            </div>
+        </div>
+    </div>
+
+    <!--中间内容-->
+    <div class="m-container-small m-padded-tb-big">
+        <div class="ui container">
+            {{if .msg }}
+                <div class="ui success message">
+                    <i class="close icon"></i>
+                    <div class="header">提示：</div>
+                    <p>{{.msg}}</p>
+                </div>
+            {{else}}
+
+            {{end}}
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>名称</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+
+                <tbody>
+                {{range $index,$name:=.all}}
+                    <tr>
+                        <td>{{$name.Id}}</td>
+                        <td>{{$name.TypeName}}</td>
+                        <td>
+                            <a href="/admin/type/edit?id={{$name.Id}}&name={{$name.TypeName}}"
+                               class="ui mini teal basic button">编辑</a>
+                            <a href="/admin/type?id={{$name.Id}}"
+                               class="ui mini red basic button">删除</a>
+                        </td>
+                    </tr>
+                {{end}}
+                </tbody>
+
+
+                <tfoot>
+                <tr>
+                    <th colspan="6">
+{{/*                        <div class="ui mini pagination menu" th:if="${page.totalPages}>1">*/}}
+{{/*                            <a th:href="@{/admin/types(page=${page.number}-1)}" class="  item"*/}}
+{{/*                               th:unless="${page.first}">上一页</a>*/}}
+{{/*                            <a th:href="@{/admin/types(page=${page.number}+1)}" class=" item"*/}}
+{{/*                               th:unless="${page.last}">下一页</a>*/}}
+{{/*                        </div>*/}}
+                        <a href="/admin/type/add"
+                           class="ui mini right floated teal basic button">新增</a>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <!--底部footer-->
+    {{template "footer1" .}}
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+        //消息提示关闭初始化
+        $('.message .close')
+            .on('click', function () {
+                $(this)
+                    .closest('.message')
+                    .transition('fade');
+            });
+    </script>
+    </body>
+    </html>
+{{end}}

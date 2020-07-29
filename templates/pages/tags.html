@@ -1,0 +1,101 @@
+{{template "header1".}}
+
+  <!--中间内容-->
+  <div  class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+      <!--header-->
+      <div class="ui top attached segment">
+        <div class="ui middle aligned two column grid">
+          <div class="column">
+            <h3 class="ui teal header">标签</h3>
+          </div>
+          <div class="right aligned column">
+            共 <h2 class="ui orange header m-inline-block m-text-thin"> {{.numb}} </h2> 个
+          </div>
+        </div>
+      </div>
+
+      <div class="ui attached segment m-padded-tb-large">
+        {{range $index,$rang := .tag}}
+        <a href="/tags/{{$rang.TagName}}" class="ui teal basic left pointing large label m-margin-tb-tiny">{{$rang.TagName}}
+          <div class="detail"><i class="es flag"></i></div>
+          {{end}}
+        </a>
+      </div>
+      {{$name :=.user.Name}}
+      {{$head :=.user.UserImg}}
+      <div class="ui top attached teal segment">
+        {{range $index,$blog := .blog}}
+          <div class="ui padded vertical segment m-padded-tb-large m-mobile-lr-clear">
+            <div class="ui mobile reversed stackable grid">
+              <div class="eleven wide column">
+                <a href="/types/{{$blog.TypeName}}/{{$blog.Id}}">
+                  <h3 class="ui header">{{$blog.Title}}</h3>
+                </a>
+                <p class="m-text">{{$blog.Recommend}}</p>
+                <div class="ui stackable grid">
+                  <div class="eleven wide column">
+                    <div class="ui mini horizontal link list">
+                      <div class="item">
+                        <img src="{{$head}}" alt=""
+                             class="ui avatar image">
+                        <div class="content"><a href="/about" class="header">{{$name}}</a></div>
+                      </div>
+                      <div class="item">
+                        <i class="calendar icon"></i> {{$blog.UpdateTime}}
+                      </div>
+                      <div class="item">
+                        <i class="eye icon"></i> {{$blog.Numb}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="right aligned five wide column">
+                    <a href="/types/{{$blog.TypeName}}" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">{{$blog.TypeName}}</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="five wide column">
+                <a href="/types/{{$blog.TypeName}}/{{$blog.Id}}" target="_blank">
+                  <img src="{{$blog.Image}}" alt="" class="ui rounded image">
+                </a>
+              </div>
+
+            </div>
+          </div>
+        {{end}}
+      </div>
+
+      <div class="ui bottom attached segment">
+        <div class="ui middle aligned two column grid">
+          <div class="column">
+            {{if eq .page 1}}
+            {{else }}
+              <a href="/tags?page={{.page|notAdd}}" class="ui mini teal basic button">上一页</a>
+            {{end}}
+          </div>
+          <div class="right aligned column">
+            {{if lt .count 10}}
+            {{else}}
+              <a href="/tags?page={{.page|add}}" class="ui mini teal basic button">下一页</a>
+            {{end}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<br>
+<br>
+  <!--底部footer-->
+{{template "footer1".}}
+
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+  </script>
+</body>
+</html>

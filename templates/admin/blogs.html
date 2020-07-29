@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客管理</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet" href="/static/css/me.css">
+</head>
+<body>
+
+  <!--导航-->
+  {{ template "header" .}}
+  <div class="ui attached pointing menu">
+    <div class="ui container">
+      <div class="right menu">
+        <a href="/admin/blog/add" class="item">发布</a>
+        <a href="#" class="teal active item">列表</a>
+      </div>
+    </div>
+  </div>
+
+  <!--中间内容-->
+  <div  class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+      <form action="/admin/blog" method="post" class="ui segment form">
+        <div class="inline fields">
+          <div class="field">
+            <input type="text" name="title" placeholder="标题">
+          </div>
+          <div class="field">
+
+              <select class="ui selection dropdown" name="typeId">
+                <option value="">分类</option>
+                {{range $index2,$name2:=.typeName}}
+                  <option value="{{$name2.Id}}">{{$name2.TypeName}}</option>
+                {{end}}
+              </select>
+
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="recommend" value="是">
+              <label>推荐</label>
+            </div>
+          </div>
+          <div class="field">
+            <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
+          </div>
+        </div>
+      </form>
+
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>标题</th>
+            <th>类型</th>
+            <th>推荐</th>
+            <th>更新时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{$page := .page}}
+        {{range $index,$name:=.all}}
+          {{with $name}}
+          <tr>
+            <td>{{.Id}}</td>
+            <td>{{.Title}}</td>
+            <td>{{.TypeName}}</td>
+            <td>{{.Recommend}}</td>
+            <td>{{.UpdateTime}}</td>
+            <td>
+              <a href="/admin/blog/edit?page={{$page}}&id={{$name.Id}}&name={{$name.Title}}" class="ui mini teal basic button">编辑</a>
+              <a href="/admin/blog?page={{$page}}&id={{$name.Id}}" class="ui mini red basic button">删除</a>
+            </td>
+          </tr>
+        {{end}}
+        {{end}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="6">
+              <div class="ui mini pagination menu">
+                {{if eq .page  1}}
+                {{else}}
+                  <a href="/admin/blog?page={{.page|notAdd}}" class="  item" type=""
+                  >上一页</a>
+                {{end}}
+                {{if ge .count 10}}
+                  <a href="/admin/blog?page={{.page|add}}" class=" item"
+                  >下一页</a>
+                {{else}}
+                {{end}}
+              </div>
+              <a href="/admin/blog/add?page={{$page}}" class="ui mini right floated teal basic button">新增</a>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <!--底部footer-->
+  {{template "footer1" .}}
+
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+      on : 'hover'
+    });
+
+  </script>
+</body>
+</html>

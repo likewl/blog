@@ -1,0 +1,62 @@
+{{template "header1".}}
+
+<!--中间内容-->
+<div class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+        <!--header-->
+        <div class="ui top attached padded segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui teal header">归档</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin"> {{.numb}} </h2> 篇博客
+                </div>
+            </div>
+        </div>
+
+        {{range $index,$BlogYear :=.year}}
+            {{if ne $BlogYear 0}}
+                <h3 class="ui center aligned header">{{$BlogYear}}</h3>
+                {{range $month :=$BlogYear|month}}
+                    {{if ne $month 0}}
+                        {{$blogStruck:= year $BlogYear $month}}
+
+                        <div class="ui fluid vertical menu">
+                            {{range $index,$blog :=$blogStruck}}
+                                {{$type := $blog.Id|selectTypeNameByBlog }}
+                                <a href="/types/{{$type.TypeName}}/{{$blog.Id}}" target="_blank" class="item">
+          <span>
+            <i class="mini teal circle icon"></i>{{$blog.Title}}
+            <div class="ui teal basic left pointing label m-padded-mini ">{{$blog.Month}}.{{$blog.Day}}</div>
+          </span>
+                                    <div class="ui orange basic left pointing label m-padded-mini ">{{$blog.Flag}}</div>
+                                </a>
+
+
+                            {{end}}
+                        </div>
+
+                    {{end}}
+                {{end}}
+
+            {{else}}
+            {{end}}
+        {{end}}
+
+    </div>
+</div>
+
+<br>
+<br>
+<!--底部footer-->
+{{template "footer1".}}
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+</script>
+</body>
+</html>

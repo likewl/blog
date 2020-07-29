@@ -1,0 +1,24 @@
+{{template "header1".}}
+
+  <!--中间内容-->
+<style>
+  body{text-align:center}
+</style>
+<img src="/static/images/404.png" style="width: available"/>
+<!--底部footer-->
+{{template "footer1".}}
+
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.wechat').popup({
+      popup : $('.wechat-qr'),
+      position: 'bottom center'
+    });
+    $('.qq').popup();
+
+  </script>
+</body>
+</html>

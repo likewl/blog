@@ -1,0 +1,459 @@
+{{template "header1".}}
+
+<!--中间内容-->
+<div id="waypoint" class="m-container m-padded-tb-big">
+    <div class="ui container">
+        <div class="ui stackable grid">
+{{/*            左边部分*/}}
+            <div class="eleven wide column">
+                <div class="ui top attached segment">
+                    <div class="ui horizontal link list">
+                        <div class="item">
+                            <img src="{{.user.UserImg}}" alt="" class="ui avatar image">
+                            <div class="content"><a href="/about" class="header">{{.user.Name}}</a></div>
+
+                        </div>
+                        <div class="item">
+                            <i class="calendar icon"></i>{{.blog.UpdateTime}}
+                        </div>
+                        <div class="item">
+                            <i class="eye icon"></i> {{.blog.Numb}}
+                        </div>
+
+                    </div>
+{{/*                    <div class="ui right aligned basic segment">*/}}
+                        <div class="ui orange right aligned basic label">{{.blog.Flag}}</div>
+{{/*                    </div>*/}}
+                </div>
+{{/*                <div class="ui attached segment">*/}}
+{{/*                    <!--图片区域-->*/}}
+{{/*                    <img src="{{.blog.Image}}" alt="" class="ui fluid rounded image">*/}}
+{{/*                </div>*/}}
+                <div class="ui  attached padded segment">
+                    <!--内容-->
+
+
+                    <h2 class="ui center aligned header">{{.blog.Title}}</h2>
+                    <br>
+
+                    <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                        {{.content}}
+                    </div>
+
+                    {{/*            <!--分类-->*/}}
+                    {{/*            <div class="ui tag labels">*/}}
+                    {{/*                <a href="/types/{{.type}}" class="ui red label">*/}}
+                    {{/*                    分类：{{.type}}*/}}
+                    {{/*                </a>*/}}
+                    {{/*            </div>*/}}
+                    <!--标签-->
+                    <div class="ui tag labels">
+                        {{/*                <a class="ui blue label">*/}}
+                        {{/*                    <i class="tag icon"></i>标签:*/}}
+                        {{/*                </a>*/}}
+                        {{range $index,$tag := .tagName}}
+                            <a href="/tags/{{$tag.TagName}}" class="ui red label">
+                                {{$tag.TagName}}
+                            </a>
+                        {{end}}
+                    </div>
+                    <!--赞赏-->
+                    {{if eq .blog.Appreciation "是"}}
+                        <div class="ui center aligned basic segment">
+                            <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                        </div>
+                        <div class="ui payQR flowing popup transition hidden">
+                            <div class="ui orange basic label">
+                                <div class="ui images" style="font-size: inherit !important;">
+                                    <div class="image">
+                                        <img src="/static/images/alipayAppreciation.jpg" alt=""
+                                             class="ui rounded bordered image" style="width: 120px">
+                                        <div>支付宝</div>
+                                    </div>
+                                    <div class="image">
+                                        <img src="/static/images/wechatAppreciation.jpg" alt=""
+                                             class="ui rounded bordered image" style="width: 120px">
+                                        <div>微信</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{else}}
+                    {{end}}
+                </div>
+                {{if eq .blog.ShareInfo "是"}}
+                    <div class="ui attached positive message">
+                        <!--博客信息-->
+
+                        <div class="ui middle aligned grid">
+                            <div class="eight wide column">
+                                <ui class="list">
+                                    <li>作者：<a href="/about" target="_blank">{{.user.Name}}</a>（联系作者）</li>
+                                    <li>发表时间：{{.blog.CreatTime}}</li>
+                                    <li>版权声明：自由转载-非商用-非衍生-保持署名</li>
+                                    <li>公众号转载：请在文末添加作者公众号二维码</li>
+                                </ui>
+                            </div>
+                            <div class="eight wide column">
+                                <img src="/static/images/gong.png" alt="" class="ui right floated rounded bordered image">
+                            </div>
+                        </div>
+
+                    </div>
+                {{else}}
+                {{end}}
+
+                {{if eq .blog.Comment "是"}}
+{{/*                    <div class="ui bottom attached segment">*/}}
+                        <!--留言区域列表-->
+                        <div id="comment-container" class="ui teal segment">
+                            <div>
+                                <div class="ui threaded comments" style="max-width: 100%;">
+                                    <h3 class="ui dividing header">指点江山</h3>
+                                    <div class="comment">
+                                        {{$user1 := .user}}
+                                        {{range $index,$comments := .comments}}
+                                            <a class="avatar">
+                                                <img src="{{$comments.Img}}">
+                                            </a>
+                                            <div class="content">
+                                                <a class="author">
+                                                    <span>{{$comments.CommentName}}</span>
+                                                    {{if eq $user1.Name $comments.CommentName }}
+                                                        {{if eq $user1.UserEmail $comments.CommentEmail }}
+                                                            <div class="ui mini basic teal left pointing label m-padded-mini">
+                                                                博主
+                                                            </div>
+                                                        {{end}}
+                                                    {{end}}
+                                                </a>
+                                                <div class="metadata">
+                                                    <span class="date">{{$comments.CommentTime}}</span>
+                                                </div>
+                                                <div class="text">
+                                                    {{$comments.CommentContent}}
+                                                </div>
+                                                <div class="actions">
+                                                    <a class="reply" data-commentid="{{$comments.Id}}"
+                                                       data-commentnickname="{{$comments.CommentName}}"
+                                                       onclick="reply(this)">回击</a>
+                                                </div>
+                                            </div>
+                                            <div class="comments">
+                                                <div class="comment">
+                                                    {{$recomments := selectCommentByComment $comments.Id 1}}
+                                                    {{range $index2,$recomment1 := $recomments}}
+                                                        <a class="avatar">
+                                                            <img src="{{$recomment1.Img}}">
+                                                        </a>
+                                                        <div class="content">
+                                                            <a class="author">
+                                                                <span>{{$recomment1.CommentName}}</span>
+                                                                {{if eq $user1.Name $recomment1.CommentName }}
+                                                                    {{if eq $user1.UserEmail $recomment1.CommentEmail }}
+                                                                        <div class="ui mini basic teal left pointing label m-padded-mini">
+                                                                            博主
+                                                                        </div>
+                                                                    {{end}}
+                                                                {{end}}
+                                                                &nbsp;<span>@{{$recomment1.ReCommentName}}</span>
+                                                            </a>
+                                                            <div class="metadata">
+                                                                <span class="date">{{$recomment1.CommentTime}}</span>
+                                                            </div>
+                                                            <div class="text">
+                                                                {{$recomment1.CommentContent}}
+                                                            </div>
+                                                            <div class="actions">
+                                                                <a class="reply" data-commentid="{{$recomment1.Id}}"
+                                                                   data-commentnickname="{{$recomment1.CommentName}}"
+                                                                   onclick="reply(this)">回击</a>
+                                                            </div>
+                                                        </div>
+                                                    {{end}}
+                                                    {{$bool:=clearComments}}
+                                                </div>
+                                            </div>
+
+                                        {{end}}
+                                    </div>
+                                    <!--/*-->
+                                </div>
+                            </div>
+                        </div>
+                        <form action="/comments" method="post" class="ui form">
+                            {{/*                    id="comment-form"*/}}
+                            <input type="hidden" name="blog.id" value="{{.blog.Id}}">
+                            <input type="hidden" name="typeName" value="{{.type}}">
+                            <input type="hidden" name="parentComment.id" value="-1">
+                            <input type="hidden" name="reCommentName" value="">
+                            <div class="field">
+                                <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                            </div>
+                            <div class="fields">
+                                <div class="field m-mobile-wide m-margin-bottom-small">
+                                    <div class="ui left icon input">
+                                        <i class="user icon"></i>
+                                        <input type="text" name="nickname" placeholder="姓名">
+                                    </div>
+                                </div>
+                                <div class="field m-mobile-wide m-margin-bottom-small">
+                                    <div class="ui left icon input">
+                                        <i class="mail icon"></i>
+                                        <input type="text" name="email" placeholder="邮箱">
+                                    </div>
+                                </div>
+                                <div class="field  m-margin-bottom-small m-mobile-wide">
+                                    <button type="submit" class="ui teal button m-mobile-wide"><i
+                                                class="edit icon"></i>发射
+                                    </button>
+                                    {{/*                            id="commentpost-btn"*/}}
+                                </div>
+                            </div>
+
+                        </form>
+{{/*                    </div>*/}}
+                {{else}}
+                {{end}}
+            </div>
+
+{{/*            右边部分*/}}
+            <div class="five wide column">
+                <div class="ui top attached segment">
+                    <div class="ui header">关于{{.user.Name}}</div>
+                </div>
+                <div class="ui attached segment">
+                    <p class="m-text">{{.user.Describe}}</p>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui orange basic left pointing label">编程</div>
+                    <div class="ui orange basic left pointing label">运动</div>
+                    <div class="ui orange basic left pointing label">旅游</div>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Golang</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Java</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">JavaScript</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Python</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">MYSQL</div>
+                </div>
+                <div class="ui attached segment">
+                    <a href="https://gitee.com/nculike/" target="_blank" class="ui circular icon button"><i class="github icon"></i></a>
+                    <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+                    <a href="#" class="ui qq circular icon button" data-content="535889315" data-position="bottom center"><i class="qq icon"></i></a>
+                </div>
+                <div class="ui top attached segment">
+                    <div class="ui header">最热文章</div>
+                </div>
+                {{range $index,$rand3 :=.hotBlog}}
+                <div class="ui attached segment">
+                    <div>
+                            <a href="/types/{{$rand3.TypeName}}/{{$rand3.Id}}" target="_blank" class="m-black m-text-thin">{{$rand3.Title}}</a>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none">
+    <div class="ui vertical icon buttons ">
+        <button type="button" class="ui toc teal button">目录</button>
+        {{if eq .blog.Comment "是"}}
+            <a href="#comment-container" class="ui teal button">留言</a>
+        {{else}}
+        {{end}}
+        <button class="ui wechat icon button"><i class="weixin icon"></i></button>
+        <div id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></div>
+    </div>
+</div>
+
+<div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
+    <ol class="js-toc">
+
+    </ol>
+</div>
+
+<div id="qrcode" class="ui wechat-qr flowing popup transition hidden " style="width: 130px !important;">
+    <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--底部footer-->
+
+{{template "footer1".}}
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+
+<script src="/static/lib/prism/prism.js"></script>
+<script src="/static/lib/tocbot/tocbot.min.js"></script>
+<script src="/static/lib/qrcode/qrcode.min.js"></script>
+<script src="/static/lib/waypoints/jquery.waypoints.min.js"></script>
+
+
+<script>
+    var headerEl = 'h1,h2,h3,h4',  //headers
+        content = '.js-toc-content',//文章容器
+        idArr = {};  //标题数组以确定是否增加索引id
+    //add #id
+
+    $(content).children(headerEl).each(function () {
+        //去除空格以及多余标点
+        var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+        headerId = headerId.toLowerCase();
+        if (idArr[headerId]) {
+            //id已经存在
+            $(this).attr('id', headerId + '-' + idArr[headerId]);
+            idArr[headerId]++;
+        }
+        else {
+            //id未存在
+            idArr[headerId] = 1;
+            $(this).attr('id', headerId);
+        }
+    });
+
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('#payButton').popup({
+        popup: $('.payQR.popup'),
+        on: 'click',
+        position: 'bottom center'
+    });
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+
+    $('.toc.button').popup({
+        popup: $('.toc-container.popup'),
+        on: 'click',
+        position: 'left center'
+    });
+
+    $('.wechat').popup({
+        popup: $('.wechat-qr'),
+        position: 'left center'
+    });
+
+    var qrcode = new QRCode("qrcode", {
+        text: "http://{{.host}}/types/{{.type}}/{{.blog.Id}}",
+        width: 110,
+        height: 110,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    $('#toTop-button').click(function () {
+        $(window).scrollTo(0, 500);
+    });
+
+
+    var waypoint = new Waypoint({
+        element: document.getElementById('waypoint'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                $('#toolbar').show(100);
+            } else {
+                $('#toolbar').hide(500);
+            }
+            console.log('Scrolled to waypoint!  ' + direction);
+        }
+    });
+
+    //评论表单验证
+    $('.ui.form').form({
+        fields: {
+            title: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入评论内容'
+                }
+                ]
+            },
+            content: {
+                identifier: 'nickname',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入你的大名'
+                }]
+            },
+            type: {
+                identifier: 'email',
+                rules: [{
+                    type: 'email',
+                    prompt: '请填写正确的邮箱地址'
+                }]
+            }
+        }
+    });
+
+    // $(function () {
+    //     $("#comment-container").load(/comments/{id}(id=${blog.id})}]]*/"comments/6");
+    // });
+
+
+    $('#commentpost-btn').click(function () {
+        var boo = $('.ui.form').form('validate form');
+        if (boo) {
+            console.log('校验成功');
+            postData();
+        } else {
+            console.log('校验失败');
+        }
+
+    });
+
+    function postData() {
+        $("#comment-container").load("/comments", {
+            "parentComment.id": $("[name='parentComment.id']").val(),
+            "commentNickname": $("[name='commentNickname']").val(),
+            "blog.id": $("[name='blog.id']").val(),
+            "nickname": $("[name='nickname']").val(),
+            "email": $("[name='email']").val(),
+            "content": $("[name='content']").val()
+        }, function (responseTxt, statusTxt, xhr) {
+            $(window).scrollTo($('#comment-container'), 500);
+            clearContent();
+        });
+    }
+
+    function clearContent() {
+        $("[name='content']").val('');
+        $("[name='parentComment.id']").val(-1);
+        $("[name='content']").attr("placeholder", "请输入评论信息...");
+    }
+
+
+    function reply(obj) {
+        var commentId = $(obj).data('commentid');
+        var commentNickname = $(obj).data('commentnickname');
+        $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
+        $("[name='parentComment.id']").val(commentId);
+        $("[name='reCommentName']").val(commentNickname);
+        $(window).scrollTo($('#comment-form'), 500);
+    }
+
+
+</script>
+</body>
+</html>
