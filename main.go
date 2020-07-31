@@ -103,6 +103,6 @@ func main() {
 	r.NoRoute(page.NotFoundHandler)
 
 	//启动服务
-	r.Run(":80")
+	r.Run(":81")
 
 }
