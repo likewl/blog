@@ -12,7 +12,7 @@ var (
 )
 
 func InitMysql() (err error) {
-	dsn := "root:123456@(localhost)/blog?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "like:Qq123_456@(localhost)/blog?charset=utf8mb4&parseTime=True&loc=Local"
 	DB, err = gorm.Open("mysql", dsn)
 	if err != nil {
 		fmt.Print("数据库连接失败")
