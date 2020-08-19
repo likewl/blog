@@ -22,7 +22,7 @@
 
                     </div>
 {{/*                    <div class="ui right aligned basic segment">*/}}
-                        <div class="ui orange right aligned basic label">{{.blog.Flag}}</div>
+{{/*                        <div class="ui orange right aligned basic label">{{.blog.Flag}}</div>*/}}
 {{/*                    </div>*/}}
                 </div>
 {{/*                <div class="ui attached segment">*/}}
@@ -90,8 +90,8 @@
                                 <ui class="list">
                                     <li>作者：<a href="/about" target="_blank">{{.user.Name}}</a>（联系作者）</li>
                                     <li>发表时间：{{.blog.CreatTime}}</li>
-                                    <li>版权声明：自由转载-非商用-非衍生-保持署名</li>
-                                    <li>公众号转载：请在文末添加作者公众号二维码</li>
+                                    <li>部分内容来自网络转载，如有侵权请及时联系删除。</li>
+
                                 </ui>
                             </div>
                             <div class="eight wide column">
@@ -188,13 +188,13 @@
                             <input type="hidden" name="parentComment.id" value="-1">
                             <input type="hidden" name="reCommentName" value="">
                             <div class="field">
-                                <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                                <textarea name="content" placeholder="请输入点评..."></textarea>
                             </div>
                             <div class="fields">
                                 <div class="field m-mobile-wide m-margin-bottom-small">
                                     <div class="ui left icon input">
                                         <i class="user icon"></i>
-                                        <input type="text" name="nickname" placeholder="姓名">
+                                        <input type="text" name="nickname" placeholder="尊姓大名">
                                     </div>
                                 </div>
                                 <div class="field m-mobile-wide m-margin-bottom-small">
@@ -354,7 +354,7 @@
     });
 
     var qrcode = new QRCode("qrcode", {
-        text: "http://{{.host}}/types/{{.type}}/{{.blog.Id}}",
+        text: "https://www.likeyl.cn/types/{{.type}}/{{.blog.Id}}",
         width: 110,
         height: 110,
         colorDark: "#000000",
