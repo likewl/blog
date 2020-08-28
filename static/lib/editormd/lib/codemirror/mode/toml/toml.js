@@ -44,7 +44,7 @@ CodeMirror.defineMode("toml", function () {
             stream.match(/^.[^\\\"\']*/);
           }
         }
-        return state.lhs ? "property string" : "string"; // Token style
+        return state.lhs ? "property string" : "string"; // Token style1
       } else if (state.inArray && stream.peek() === ']') {
         stream.next();
         state.inArray--;

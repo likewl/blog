@@ -17,6 +17,7 @@ func IndexHandler(c *gin.Context) {
 	tag := dao.RandTag()
 	types := dao.Rand()
 	recommend := dao.RandBlog()
+	hotBLog := dao.HotBLog()
 	c.HTML(http.StatusOK, "pages/index.html", gin.H{
 		"user":      user,
 		"blog":      blog,
@@ -26,8 +27,9 @@ func IndexHandler(c *gin.Context) {
 		"tag":       tag,
 		"page":      page,
 		"recommend": recommend,
+		"hotBlog":   hotBLog,
 		"active1":   "active",
-		"pageTitle": "一个致力于做JPG的小码农",
+		"pageTitle": "记录学习和生活",
 	})
 }
 func PagesHandler(c *gin.Context) {

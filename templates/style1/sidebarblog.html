@@ -1,0 +1,97 @@
+{{define "sidebarblog"}}
+    <div class="col-sm-12 col-md-4 blog-sidebar">
+        <div class="sidebar-module" id="about_me">
+            <div class="sidebar-inner">
+                <section class="site-overview sidebar-panel  sidebar-panel-active ">
+
+
+                    <nav class="site-state motion-element">
+                        <div class="site-state-item site-state-posts">
+                            <a href="#">
+                                {{$sumnub2:=SUMBlog}}
+                                <span class="site-state-item-count">{{$sumnub2}}</span>
+                                <span class="site-state-item-name">文章</span>
+                            </a>
+                        </div>
+
+                        <div class="site-state-item site-state-tags">
+                            <a href="#">
+                                {{$sumnub3:=NewBlog}}
+                                <span class="site-state-item-count">{{$sumnub3}}</span>
+                                <span class="site-state-item-name">今日更新</span>
+                            </a>
+                        </div>
+
+                        <div class="site-state-item site-state-categories">
+                            <a href="#">
+                                {{$sumnub1:=SUMBlogNUM}}
+                                <span class="site-state-item-count">{{$sumnub1}}</span>
+                                <span class="site-state-item-name">浏览</span>
+                            </a>
+                        </div>
+
+                    </nav>
+
+                    {{/*                    <div class="feed-link motion-element" style="padding: 5px 0;">*/}}
+                    {{/*                        <a href="feed" rel="alternate">*/}}
+                    {{/*                            <i class="iconfont">&#xe605;</i>*/}}
+                    {{/*                            RSS 订阅*/}}
+                    {{/*                        </a>*/}}
+                    {{/*                    </div>*/}}
+
+                </section>
+            </div>
+        </div>
+
+        <div class="sidebar-module" id="sidebar-suggest">
+
+
+        </div>
+
+        {{/*        相关文章*/}}
+        <div>
+            {{$blogs:=SelectBlog .Type.Id .blog.Id}}
+            {{$typenameA:=.typeName}}
+            {{$len :=len $blogs}}
+            {{if $len}}
+                <div class="sidebar-module" id="new-module">
+                    <div class="card">
+                        <h4>相关文章</h4>
+                        <ol class="list-unstyled">
+                            {{range $index,$blogA:= $blogs}}
+                                <li>
+                                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                    <a href="/types/{{$typenameA}}/{{$blogA.Id}}" target="_blank">{{$blogA.Title}}</a>
+                                </li>
+                            {{end}}
+                        </ol>
+                    </div>
+                </div>
+            {{end}}
+        </div>
+        {{/*        最热文章*/}}
+        <div class="sidebar-module" id="new-module">
+            <div class="card">
+                <h4>最热文章</h4>
+                <ol class="list-unstyled">
+                    {{range $index,$rand3 :=.hotBlog}}
+                        <li>
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            <a href="/types/{{$rand3.TypeName}}/{{$rand3.Id}}" target="_blank">{{$rand3.Title}}</a>
+                        </li>
+                    {{end}}
+                </ol>
+            </div>
+        </div>
+
+
+
+{{/*        二维码*/}}
+        <div>
+            <h4 class="" align="center">扫码关注我</h4>
+            <div align="center"><img src="/static/images/wechat.jpg" width="200"  alt="" ></div>
+        </div>
+
+
+    </div>
+{{end}}

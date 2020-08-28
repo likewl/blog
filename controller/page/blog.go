@@ -29,7 +29,6 @@ func BlogHandler(c *gin.Context) {
 	content1 := blog.Content
 	//content := middleware.MarkdownToHTML(content1)
 	content := middleware.Markdown(content1)
-	fmt.Println(content)
 	user := dao.SelectUser()
 	host := c.Request.Host
 	hotBLog := dao.HotBLog()
@@ -41,8 +40,9 @@ func BlogHandler(c *gin.Context) {
 		"comments":  comments,
 		"type":      name,
 		"typeName":  oneType.TypeName,
+		"Type":      oneType,
 		"tagName":   tagName,
 		"host":      host,
-		"hotBlog":      hotBLog,
+		"hotBlog":   hotBLog,
 	})
 }

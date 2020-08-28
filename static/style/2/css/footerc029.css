@@ -1,0 +1,36 @@
+/*
+ * Footer
+ */
+
+.footer-menu {
+	padding: 20px 0 40px 0;
+	color: #ffffff;
+	background-color: #4056a1;
+	margin-top: 20px;
+}
+
+.footer-col {
+	margin-top: 28px;
+}
+
+.footer-menu h3 {
+	font-size: 20px;
+	color: #ffffff;
+	margin-bottom: 18px;
+}
+
+.footer-menu a {
+	color: #ffffff;
+}
+
+.blog-footer {
+  padding: 40px 0;
+  color: rgba( 255, 255, 255, .6 );
+  text-align: center;
+  background-color: #2d2c2a;
+}
+
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+

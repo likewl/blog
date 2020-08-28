@@ -171,8 +171,8 @@
    MT("document_regexp",
       "[def @document] [tag regexp]([string \".*blah.+\"]) { [builtin #id] { } }");
 
-   MT("counter-style",
-      "[def @counter-style] [variable binary] {",
+   MT("counter-style1",
+      "[def @counter-style1] [variable binary] {",
       "  [property system]: [atom numeric];",
       "  [property symbols]: [number 0] [number 1];",
       "  [property suffix]: [string \".\"];",
@@ -180,16 +180,16 @@
       "  [property speak-as]: [atom numeric];",
       "}");
 
-   MT("counter-style-additive-symbols",
-      "[def @counter-style] [variable simple-roman] {",
+   MT("counter-style1-additive-symbols",
+      "[def @counter-style1] [variable simple-roman] {",
       "  [property system]: [atom additive];",
       "  [property additive-symbols]: [number 10] [variable X], [number 5] [variable V], [number 1] [variable I];",
       "  [property range]: [number 1] [number 49];",
       "}");
 
-   MT("counter-style-use",
-      "[tag ol][qualifier .roman] { [property list-style]: [variable simple-roman]; }");
+   MT("counter-style1-use",
+      "[tag ol][qualifier .roman] { [property list-style1]: [variable simple-roman]; }");
 
-   MT("counter-style-symbols",
-      "[tag ol] { [property list-style]: [atom symbols]([atom cyclic] [string \"*\"] [string \"\\2020\"] [string \"\\2021\"] [string \"\\A7\"]); }");
+   MT("counter-style1-symbols",
+      "[tag ol] { [property list-style1]: [atom symbols]([atom cyclic] [string \"*\"] [string \"\\2020\"] [string \"\\2021\"] [string \"\\A7\"]); }");
 })();

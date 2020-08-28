@@ -239,13 +239,13 @@ var QRCode;
 			var nCount = oQRCode.getModuleCount();
 			var nWidth = Math.floor(_htOption.width / nCount);
 			var nHeight = Math.floor(_htOption.height / nCount);
-			var aHTML = ['<table style="border:0;border-collapse:collapse;">'];
+			var aHTML = ['<table style1="border:0;border-collapse:collapse;">'];
 			
 			for (var row = 0; row < nCount; row++) {
 				aHTML.push('<tr>');
 				
 				for (var col = 0; col < nCount; col++) {
-					aHTML.push('<td style="border:0;border-collapse:collapse;padding:0;margin:0;width:' + nWidth + 'px;height:' + nHeight + 'px;background-color:' + (oQRCode.isDark(row, col) ? _htOption.colorDark : _htOption.colorLight) + ';"></td>');
+					aHTML.push('<td style1="border:0;border-collapse:collapse;padding:0;margin:0;width:' + nWidth + 'px;height:' + nHeight + 'px;background-color:' + (oQRCode.isDark(row, col) ? _htOption.colorDark : _htOption.colorLight) + ';"></td>');
 				}
 				
 				aHTML.push('</tr>');

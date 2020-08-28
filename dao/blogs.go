@@ -98,7 +98,7 @@ func BlogView(pageIndex int) (*[]middleware.BlogView, int) {
 	var Blog []middleware.BlogView
 	var count int
 	//var Blog model.Blog
-	DB.Debug().Table("blogs").Select("blogs.id,blogs.title,types.type_name,blogs.description,blogs.recommend,blogs.numb,blogs.update_time,blogs.image").Joins("left join types on types.id = blogs.type_id").Order("blogs.id  DESC").Offset((pageIndex - 1) * 10).Limit(10).Find(&Blog)
+	DB.Debug().Table("blogs").Select("blogs.id,blogs.title,types.type_name,blogs.description,blogs.recommend,blogs.numb,blogs.update_time,blogs.image").Joins("left join types on types.id = blogs.type_id").Where("blogs.type_id !=16").Order("blogs.id  DESC").Offset((pageIndex - 1) * 10).Limit(10).Find(&Blog)
 	count = len(Blog)
 	return &Blog, count
 }
@@ -176,7 +176,20 @@ func BlogResearch(title string, pageIndex int) (*[]middleware.BlogView, int) {
 	var Blog []middleware.BlogView
 	var count int
 	//var Blog model.Blog
-	DB.Debug().Table("blogs").Select("blogs.id,blogs.title,types.type_name,blogs.description,blogs.recommend,blogs.numb,blogs.update_time,blogs.image").Where("title like ?", "%"+title+"%").Joins("left join types on types.id = blogs.type_id").Order("blogs.id  DESC").Offset((pageIndex - 1) * 10).Limit(10).Find(&Blog)
+	DB.Debug().Table("blogs").Select("blogs.id,blogs.title,types.type_name,blogs.description,blogs.recommend,blogs.numb,blogs.update_time,blogs.image").Where("title like ? and type_id !=16", "%"+title+"%").Joins("left join types on types.id = blogs.type_id").Order("blogs.id  DESC").Offset((pageIndex - 1) * 10).Limit(10).Find(&Blog)
 	count = len(Blog)
 	return &Blog, count
+}
+//查找相关文章
+func SelectBlog(typeId,blogid int) *[]model.Blog {
+	var blogs []model.Blog
+	DB.Debug().Where("type_id = ? and id != ?", typeId,blogid).Order("RAND()").Limit(5).Find(&blogs)
+	return &blogs
+}
+
+//查看daodao
+func SelectNewNotes() *[]model.Blog {
+	var blogs []model.Blog
+	DB.Where("type_id = 16").Order("id desc").Limit(5).Find(&blogs)
+	return &blogs
 }

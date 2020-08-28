@@ -37,6 +37,14 @@ func main() {
 		"selectTypeNameByBlog":   dao.SelectTypeNameByBlog,
 		"clearComments":          dao.ClearComments,
 		"selectCommentByComment": dao.SelectCommentByComment,
+		"SUMBlog": dao.SUMBlog,
+		"SUMBlogNUM": dao.SUMBlogNUM,
+		"NewBlog": dao.NewBlog,
+		"SelectBlog": dao.SelectBlog,
+		"SelectNewComment": dao.SelectNewComment,
+		"SelectOneType": dao.SelectOneType,
+		"safe": dao.Safe,
+		"notes": dao.SelectNewNotes,
 	})
 	store := cookie.NewStore([]byte("secret"))
 	//设置session中间件
@@ -47,6 +55,7 @@ func main() {
 
 	//首页
 	r.Any("/", page.IndexHandler)
+	r.Any("/notes", page.NotesController)
 	r.Any("/research", page.ResearchHandler)
 
 	r.Any("/blogs/page/:page", page.PagesHandler)

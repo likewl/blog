@@ -11,25 +11,30 @@ import (
 func ResearchHandler(c *gin.Context) {
 	user := dao.SelectUser()
 	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
-	title := c.PostForm("title")
+	title := c.Query("research")
+	if title =="" {
+		title = "NULL"
+	}
 	blog, count := dao.BlogResearch(title, page)
 	//numb := dao.Count()
 	fmt.Println(count)
 	tag := dao.RandTag()
 	types := dao.Rand()
 	recommend := dao.Recommend()
-	c.HTML(http.StatusOK, "research.html", gin.H{
+	hotBLog := dao.HotBLog()
+	c.HTML(http.StatusOK, "researcher", gin.H{
 		"user":      user,
 		"blog":      blog,
 		"count":     count,
 		"numb":      count,
 		"type":      types,
 		"tag":       tag,
+		"hotBlog":   hotBLog,
 		"page":      page,
 		"title":     title,
 		"recommend": recommend,
 		"active1":   "active",
-		"pageTitle": "一个致力于做JPG的小码农",
+		"pageTitle": "搜索",
 	})
 }
 

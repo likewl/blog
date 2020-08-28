@@ -4,6 +4,7 @@ import (
 	"blog/middleware"
 	"blog/model"
 	"fmt"
+	"html/template"
 )
 
 func CreatType(name string) {
@@ -53,10 +54,23 @@ func SelectNameAll(name string, pageIndex int) (*[]middleware.BlogView, int, err
 	count = len(Blog)
 	return &Blog, count, err
 }
+func SelectBlogsByTypeId(typeId int, pageIndex int) (*[]middleware.BlogView, int, error) {
+	var Blog []middleware.BlogView
+	err := DB.Debug().Table("blogs").Select("blogs.id,blogs.title,types.type_name,blogs.content as description,blogs.recommend,blogs.numb,blogs.update_time,blogs.image").Where("type_id = ?", typeId).Joins("left join types on types.id = blogs.type_id").Order("blogs.id  DESC").Offset((pageIndex - 1) * 10).Limit(10).Find(&Blog).Error
+	count := len(Blog)
+	return &Blog, count, err
+}
+
 func SelectOneType(id int) *model.Type {
 	var type1 model.Type
-	DB.Where("id = ?", id).First(&type1)
+	var blog model.Blog
+	DB.Where("id = ?", id).First(&blog)
+	DB.Where("id = ?", blog.TypeId).First(&type1)
 	return &type1
+}
+
+func Safe (string2 string) template.HTML {
+	return template.HTML(string2)
 }
 
 //根据博文id差分类名
