@@ -61,7 +61,7 @@
                             {{range $index,$blogA:= $blogs}}
                                 <li>
                                     <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                                    <a href="/types/{{$typenameA}}/{{$blogA.Id}}" target="_blank">{{$blogA.Title}}</a>
+                                    <a href="/types/{{$typenameA}}/{{$blogA.Id}}">{{$blogA.Title}}</a>
                                 </li>
                             {{end}}
                         </ol>
@@ -77,7 +77,7 @@
                     {{range $index,$rand3 :=.hotBlog}}
                         <li>
                             <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                            <a href="/types/{{$rand3.TypeName}}/{{$rand3.Id}}" target="_blank">{{$rand3.Title}}</a>
+                            <a href="/types/{{$rand3.TypeName}}/{{$rand3.Id}}">{{$rand3.Title}}</a>
                         </li>
                     {{end}}
                 </ol>
@@ -87,7 +87,7 @@
 
 
 {{/*        二维码*/}}
-        <div>
+        <div class="visible-lg">
             <h4 class="" align="center">扫码关注我</h4>
             <div align="center"><img src="/static/images/wechat.jpg" width="200"  alt="" ></div>
         </div>

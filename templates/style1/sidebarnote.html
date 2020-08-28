@@ -63,11 +63,12 @@
             </div>
         </div>
         {{/*        最新留言*/}}
-        <div>
+        <div class="visible-lg">
             {{$commentA:=SelectNewComment}}
             <div class="sidebar-module" id="comments_feed">
                 <div class="card">
                     <h4>最新留言</h4>
+                    {{$user1 := .user}}
                     {{range $index,$newComment:=$commentA}}
                         <div class="clear comment-feed">
                             <div class="comment-feed-avatar">
@@ -81,10 +82,16 @@
                                        class="comment-feed-author">
                                         {{$newComment.CommentName}}
                                     </a>
+                                    {{if eq $user1.Name $newComment.CommentName }}
+                                        {{if eq $user1.UserEmail $newComment.CommentEmail }}
+                                            <span class="label label-info">博主</span>
+                                        {{end}}
+                                    {{end}}
                                     <span class="metadata comment-feed-time">{{$newComment.CommentTime}}</span>
                                 </p>
                                 <p>
-                                    {{$newComment.CommentContent}}
+                                    {{if ne $newComment.ReCommentId -1}}
+                                        <span style="color: #9c9494">@{{$newComment.ReCommentName}}</span>{{end}}{{$newComment.CommentContent}}
                                 </p>
                             </div>
                         </div>
@@ -110,7 +117,7 @@
         </div>
 
         {{/*        二维码*/}}
-        <div>
+        <div class="visible-lg">
             <h4 class="" align="center">扫码关注我</h4>
             <div align="center"><img src="/static/images/wechat.jpg" width="200" alt=""></div>
         </div>

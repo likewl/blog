@@ -104,6 +104,7 @@
             <div class="sidebar-module" id="comments_feed">
                 <div class="card">
                     <h4>最新留言</h4>
+                    {{$user1 := .user}}
                     {{range $index,$newComment:=$commentA}}
                         <div class="clear comment-feed">
                             <div class="comment-feed-avatar">
@@ -117,10 +118,16 @@
                                        class="comment-feed-author">
                                         {{$newComment.CommentName}}
                                     </a>
+                                    {{if eq $user1.Name $newComment.CommentName }}
+                                        {{if eq $user1.UserEmail $newComment.CommentEmail }}
+                                            <span class="label label-info">博主</span>
+                                        {{end}}
+                                    {{end}}
                                     <span class="metadata comment-feed-time">{{$newComment.CommentTime}}</span>
                                 </p>
                                 <p>
-                                    {{$newComment.CommentContent}}
+                                    {{if ne $newComment.ReCommentId -1}}
+                                    <span style="color: #9c9494">@{{$newComment.ReCommentName}}</span>{{end}}{{$newComment.CommentContent}}
                                 </p>
                             </div>
                         </div>
@@ -130,10 +137,10 @@
         </div>
         {{/*        随机文章*/}}
         <div>
-            <div class="sidebar-module" id="random_articles">
+            <div class="sidebar-module visible-lg" id="random_articles" >
                 <div class="card">
                     <h4>随机文章</h4>
-                    <ol class="list-unstyled">
+                    <ol class="list-unstyled" >
                         {{range $index,$rand3 :=.recommend}}
                             <li>
                                 <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
