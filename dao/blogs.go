@@ -141,15 +141,21 @@ func SelectBlogAll() *[]model.Blog {
 //123
 //按照时间归档年份
 //1
-func ArchYear() *[]int {
+func ArchYear(page int) (*[]int, int) {
 	list := make([]int, 12)
 	var blog []model.Blog
-	DB.Debug().Raw("SELECT * FROM `blogs` GROUP BY YEAR DESC").Scan(&blog)
+	DB.Debug().Table("blogs").Group("YEAR DESC").Offset(page - 1).Limit(1).Scan(&blog)
 	for i := 0; i < len(blog); i++ {
 		y := blog[i].Year
 		list[i] = y
 	}
-	return &list
+	return &list, blog[0].Year
+}
+func ArchYearCount() int {
+	var blog []model.Blog
+	DB.Debug().Table("blogs").Group("YEAR DESC").Scan(&blog)
+	count := len(blog)
+	return count
 }
 
 //按照时间归档月份
@@ -169,7 +175,7 @@ func ArchMonth(year int) *[]int {
 //3
 func BlogYear(year int, month int) *[]model.Blog {
 	var blog []model.Blog
-	DB.Debug().Raw("SELECT * FROM `blogs` where year = ? and month = ?", year, month).Order("`id` DESC").Find(&blog)
+	DB.Debug().Raw("SELECT * FROM `blogs` where year = ? and month = ? and type_id !=16", year, month).Order("`id` DESC").Find(&blog)
 	return &blog
 }
 func BlogResearch(title string, pageIndex int) (*[]middleware.BlogView, int) {
@@ -180,10 +186,11 @@ func BlogResearch(title string, pageIndex int) (*[]middleware.BlogView, int) {
 	count = len(Blog)
 	return &Blog, count
 }
+
 //查找相关文章
-func SelectBlog(typeId,blogid int) *[]model.Blog {
+func SelectBlog(typeId, blogid int) *[]model.Blog {
 	var blogs []model.Blog
-	DB.Debug().Where("type_id = ? and id != ?", typeId,blogid).Order("RAND()").Limit(5).Find(&blogs)
+	DB.Debug().Where("type_id = ? and id != ?", typeId, blogid).Order("RAND()").Limit(5).Find(&blogs)
 	return &blogs
 }
 

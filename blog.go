@@ -114,4 +114,9 @@ func main() {
 	//启动服务
 	r.Run(":81")
 
+	//api优雅重启接口初始化
+	//if err := endless.ListenAndServe(":81", r); err!=nil{
+	//	log.Fatalf("listen: %s\n", err)
+	//}
+
 }

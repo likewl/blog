@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    {{template "head".}}
+</head>
+
+<body>
+
+<div class="blog-masthead">
+    {{template "bar".}}
+</div>
+
+<div class="container">
+
+    <div class="blog-header">
+        <div class="title_wrap">
+            <h1 style="font-size: 28px;">{{.title}}</h1>
+            <p class="lead blog-description">所有的文章都在这里了<span class="glyphicon glyphicon-list-alt"></span>
+            </p>
+        </div>
+        {{template "research".}}
+        <div style="clear: both;"></div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-8 blog-main content">
+
+            {{range $index,$BlogYear :=.year}}
+                {{if ne $BlogYear 0}}
+
+                    {{range $month :=$BlogYear|month}}
+                        {{if ne $month 0}}
+                            {{$blogStruck:= year $BlogYear $month}}
+
+                            <div class="media card" style="margin-bottom: 15px;">
+                                <ul class="listing">
+
+                                    {{range $index,$blog :=$blogStruck}}
+                                        {{$type := $blog.Id|selectTypeNameByBlog }}
+
+                                        <li class="article-desc">
+                                            <span class="date" style="color: #94999a">{{$blog.Month}}/{{$blog.Day}}</span>
+                                            <a href="/types/{{$type.TypeName}}/{{$blog.Id}}"
+                                               title="{{$blog.Title}}" style="color: #000102">{{$blog.Title}}</a>
+                                        </li>
+                                    {{end}}
+                                </ul>
+                            </div>
+                        {{end}}
+                    {{end}}
+
+                {{else}}
+                {{end}}
+            {{end}}
+
+            <ul class="pagination">
+                {{if eq .page 1}}
+                    <li class="disabled"><span>&laquo; Previous</span></li>
+                {{else }}
+                    <li><a href="/types/{{.name}}?page={{.page|notAdd}}" rel="next">&laquo; Previous</a></li>
+                {{end}}
+                {{if lt .page .count}}
+                    <li class="disabled"><span>Next &raquo;</span></li>
+                {{else}}
+                    <li><a href="/types/{{.name}}?page={{.page|add}}" rel="next">Next &raquo;</a></li>
+                {{end}}
+            </ul>
+
+        </div><!-- /.blog-main -->
+
+        {{template "sidebarabout".}}
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<style>
+    .footer-menu h3 {
+        font-size: 20px;
+        color: #ffffff;
+        margin-bottom: 18px;
+    }
+
+    .footer-menu a {
+        color: #ffffff;
+    }
+</style>
+
+<footer>
+    {{template "footer".}}<!-- /.blog-footer -->
+
+</footer>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-10338482-28');
+</script>
+</body>
+</html>
