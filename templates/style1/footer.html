@@ -1,48 +1,54 @@
 {{define "footer"}}
     <div class="footer-menu">
         <div class="container">
-            <div class="col-sm-12 col-md-4 footer-col">
+            <div class="col-xs-6 col-sm-7 col-md-8 col-lg-4 footer-col">
                 {{/*            <footer class="blog-footer">*/}}
                 <h3>关于本站</h3>
 
 
                 <p>@2020 {{.user.BlogName}}</p>
                 <p>版本: 2.0</p>
+
                 <p>
                     <a href="http://beian.miit.gov.cn" rel="nofollow" target="_blank">冀ICP备20018381号</a>
                 </p>
                 {{/*            </footer>*/}}
 
             </div>
-            <div class="col-sm-12 col-md-4 footer-col"></div>
+            <div class="col-xs-6 col-sm-5 col-md-4 col-lg-4 footer-col ">
+                <div class="hidden-lg">
+                    <h3>扫码关注我</h3>
+                    <p><img src="/static/images/wechat.jpg" width="100" alt=""></p>
+                </div>
+            </div>
+            <div class=" col-lg-4 footer-col visible-lg">
+                <div class="">
+                    <h3>骄傲地使用</h3>
+                    <p>
 
-            <div class="col-sm-12 col-md-4 footer-col visible-lg">
-                <h3>骄傲地使用</h3>
-                <p>
+                        <a href="https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=ihog29ly"
+                           onclick="_hmt.push(['_trackEvent', '阿里云邀请', 'footer', window.location.href]);"
+                           rel="nofollow" target="_blank">
+                            <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+                            阿里云服务器
+                        </a>
+                    </p>
 
-                    <a href="https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=ihog29ly"
-                       onclick="_hmt.push(['_trackEvent', '阿里云邀请', 'footer', window.location.href]);"
-                       rel="nofollow" target="_blank">
-                        <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
-                        阿里云服务器
-                    </a>
-                </p>
+                    <p>
+                        <a href="https://portal.qiniu.com/signup?code=1h79woti9k3te" rel="nofollow" target="_blank"
+                           onclick="_hmt.push(['_trackEvent', '七牛CDN邀请', 'footer', window.location.href]);">
+                            <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                            七牛 CDN
+                        </a>
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-grain" aria-hidden="true"></span> Powered by <a
+                                href="https://golang.org/" rel="nofollow" target="_blank">
 
-                <p>
-                    <a href="https://portal.qiniu.com/signup?code=1h79woti9k3te" rel="nofollow" target="_blank"
-                       onclick="_hmt.push(['_trackEvent', '七牛CDN邀请', 'footer', window.location.href]);">
-                        <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
-                        七牛 CDN
-                    </a>
-                </p>
-                <p>
-                    <span class="glyphicon glyphicon-grain" aria-hidden="true"></span> Powered by <a
-                            href="https://golang.org/" rel="nofollow" target="_blank">
-
-                        Golang
-                    </a>
-                </p>
-
+                            Golang
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

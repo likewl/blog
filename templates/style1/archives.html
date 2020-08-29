@@ -58,12 +58,13 @@
                 {{if eq .page 1}}
                     <li class="disabled"><span>&laquo; Previous</span></li>
                 {{else }}
-                    <li><a href="/types/{{.name}}?page={{.page|notAdd}}" rel="next">&laquo; Previous</a></li>
+                    <li><a href="/archives?page={{.page|notAdd}}" rel="next">&laquo; Previous</a></li>
                 {{end}}
-                {{if lt .page .count}}
-                    <li class="disabled"><span>Next &raquo;</span></li>
+                {{if lt  .page .count}}
+                    <li><a href="/archives?page={{.page|add}}" rel="next">Next &raquo;</a></li>
                 {{else}}
-                    <li><a href="/types/{{.name}}?page={{.page|add}}" rel="next">Next &raquo;</a></li>
+                    <li class="disabled"><span>Next &raquo;</span></li>
+
                 {{end}}
             </ul>
 
