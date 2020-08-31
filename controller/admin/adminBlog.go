@@ -192,7 +192,7 @@ func BlogEditHandler(c *gin.Context) {
 	}
 	//选择要修改的标题
 	one, _ := dao.SelectOne(id)
-	oneTypeName := dao.SelectOneType(one.TypeId)
+	oneTypeName := dao.SelectOneTypeByTypeId(one.TypeId)
 
 	c.HTML(http.StatusOK, "blogs-edit.html", gin.H{
 		"page":        page,

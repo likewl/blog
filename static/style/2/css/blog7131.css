@@ -277,7 +277,11 @@ a.read-more {
 	overflow-wrap: break-word;
 	color: #000;
 }
-
+.article-content h1 {
+	text-align: center;
+	color: black;
+	background: linear-gradient(#fff 60%, #cf4029 40%);
+}
 .article-content h2 {
 	font-size: 1.6em;
 	border-bottom: 1px solid #ddd;
@@ -292,6 +296,29 @@ a.read-more {
 
 .article-content h3 {
 	font-size: 18px;
+}
+.article-content table {
+	border-collapse: collapse;
+	border: 1px solid #aaa;
+	width: 100%;
+}
+.article-content table thead {
+	display: table-header-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+.article-content table th {
+	vertical-align: baseline;
+	padding: 5px 15px 5px 6px;
+	background-color: #3F3F3F;
+	border: 1px solid #aaa;
+	text-align: center;
+	color: #fff;
+}
+.article-content table td {
+	vertical-align: text-top;
+	padding: 6px 15px 6px 6px;
+	border: 1px solid #aaa;
 }
 
 .sidebar-inner {

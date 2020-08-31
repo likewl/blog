@@ -19,6 +19,12 @@ new Vue({
 });
 
 
+(function (){
+    var a=document.getElementById("content").getElementsByTagName("a");
+    for(let i=0; i<a.length; i++){
+        a[i].target='_blank';//定义成打开新窗口
+    }
+})();
 
 $("#search_btn").click(function() {
   var search_input = $("#search_input").val();
@@ -31,6 +37,7 @@ $("#search_input").keyup(function(event) {
         $("#search_btn").click();
     }
 });
+
 
 var captureOutboundLink = function(url) {
    ga('send', 'event', 'outbound', 'click', url, {

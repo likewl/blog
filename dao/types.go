@@ -68,8 +68,13 @@ func SelectOneType(id int) *model.Type {
 	DB.Where("id = ?", blog.TypeId).First(&type1)
 	return &type1
 }
+func SelectOneTypeByTypeId(id int) *model.Type {
+	var type1 model.Type
+	DB.Where("id = ?", id).First(&type1)
+	return &type1
+}
 
-func Safe (string2 string) template.HTML {
+func Safe(string2 string) template.HTML {
 	return template.HTML(string2)
 }
 
