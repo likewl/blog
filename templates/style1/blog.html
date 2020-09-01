@@ -47,7 +47,7 @@
 
                 {{.content}}
                 <br>
-                <p align="right">发布时间：{{.blog.CreatTime}}</p>
+                <p class="lead blog-description" align="right">发布时间：{{.blog.CreatTime}}</p>
             </div>
 
             <div class="content-support" style="">
@@ -72,7 +72,7 @@
                 </p>
             </div>
 
-            <div class="card visible-lg">
+            <div class="card">
                 {{/*                <a href="https://www.sunzhongwei.com/coupons-for-developer" style="font-size: 15px;">*/}}
                 {{/*                    <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>*/}}
                 {{/*                    领取阿里云/腾讯云服务器优惠券*/}}
@@ -82,10 +82,13 @@
                     关于作者
                 </h2>
                 <p style="font-size: 15px;">
-                    喜欢瞎折腾，顺便记记笔记。有敢兴趣的话题，欢迎加微信聊聊。
+                    喜欢踢球和健身
                     <br>
-                    白天写程序，晚上划划水，可能回复有点慢，见谅。
-                    <a href="/about">查看更多联系方式</a>
+                    爱瞎折腾，顺便记记笔记
+                <li><code>[ #################--- ] 40%</code> Golang</li>
+                <li><code>[ #################--- ] 30%</code> Java</li>
+                <li><code>[ #################--- ] 10%</code> JavaScript</li>
+                    <a href="/about">查看更多信息</a>
                 </p>
 
                 {{/*                                <h2 style="font-size: 20px; margin-top: 20px;">相关文章</h2>*/}}
@@ -331,6 +334,13 @@
         $("[name='reCommentName']").val(commentNickname);
         $(window).scrollTo($('#comment-form'), 500);
     }
+
+    (function (){
+        var a=document.getElementById("content").getElementsByTagName("a");
+        for(let i=0; i<a.length; i++){
+            a[i].target='_blank';//定义成打开新窗口
+        }
+    })();
 
 </script>
 </body>

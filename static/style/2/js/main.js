@@ -19,13 +19,6 @@ new Vue({
 });
 
 
-(function (){
-    var a=document.getElementById("content").getElementsByTagName("a");
-    for(let i=0; i<a.length; i++){
-        a[i].target='_blank';//定义成打开新窗口
-    }
-})();
-
 $("#search_btn").click(function() {
   var search_input = $("#search_input").val();
   var baidu_url = '/research?research=' + encodeURIComponent(search_input);
@@ -33,6 +26,17 @@ $("#search_btn").click(function() {
 });
 
 $("#search_input").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#search_btn").click();
+    }
+});
+
+$("#search_btn_phone").click(function() {
+    var search_input = $("#search_phone").val();
+    var baidu_url = '/research?research=' + encodeURIComponent(search_input);
+    window.open(baidu_url);
+});
+$("#search_phone").keyup(function(event) {
     if (event.keyCode === 13) {
         $("#search_btn").click();
     }

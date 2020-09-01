@@ -85,6 +85,13 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-10338482-28');
+
+        (function (){
+            var a=document.getElementById("content").getElementsByTagName("a");
+            for(let i=0; i<a.length; i++){
+                a[i].target='_blank';//定义成打开新窗口
+            }
+        })();
     </script>
     </body>
     </html>

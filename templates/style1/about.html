@@ -130,6 +130,13 @@
         $(window).scrollTo($('#comment-form'), 500);
     }
 
+    (function (){
+        var a=document.getElementById("content").getElementsByTagName("a");
+        for(let i=0; i<a.length; i++){
+            a[i].target='_blank';//定义成打开新窗口
+        }
+    })();
+
 </script>
 </body>
 

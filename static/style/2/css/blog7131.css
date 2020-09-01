@@ -676,13 +676,11 @@ blockquote, .notes_link {
 
 	.search_wrap {
 		display: block;
-		float: right; 
-		width: 305px; 
+		float: right;
+		width: 305px;
 		margin-right: 25px;
 	}
 }
-
-
 
 input.el-upload__input {
     display: none;
