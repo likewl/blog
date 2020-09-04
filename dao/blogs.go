@@ -163,7 +163,7 @@ func ArchYearCount() int {
 func ArchMonth(year int) *[]int {
 	list := make([]int, 10)
 	var blog []model.Blog
-	DB.Debug().Raw("SELECT * FROM `blogs` where year = ? GROUP BY month DESC", year).Scan(&blog)
+	DB.Debug().Raw("SELECT * FROM `blogs` where year = ? and type_id !=16 GROUP BY month DESC", year).Scan(&blog)
 	for i := 0; i < len(blog); i++ {
 		m := blog[i].Month
 		list[i] = m
