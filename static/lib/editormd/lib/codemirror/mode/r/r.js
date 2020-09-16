@@ -60,7 +60,7 @@ CodeMirror.defineMode("r", function(config) {
       return "variable";
     } else if (ch == "%") {
       if (stream.skipTo("%")) stream.next();
-      return "variable-2";
+      return "variable-1";
     } else if (ch == "<" && stream.eat("-")) {
       return "arrow";
     } else if (ch == "=" && state.ctx.argList) {
@@ -87,7 +87,7 @@ CodeMirror.defineMode("r", function(config) {
         else if (ch == "u") stream.match(/^[a-f0-9]{4}/i);
         else if (ch == "U") stream.match(/^[a-f0-9]{8}/i);
         else if (/[0-7]/.test(ch)) stream.match(/^[0-7]{1,2}/);
-        return "string-2";
+        return "string-1";
       } else {
         var next;
         while ((next = stream.next()) != null) {

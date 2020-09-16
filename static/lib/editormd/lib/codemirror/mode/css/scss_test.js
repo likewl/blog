@@ -21,10 +21,10 @@
     "[tag foo] { [property background]:[atom url]([string \'test.jpg\']) [keyword !important] }");
 
   MT('variable',
-    "[variable-2 $blue]:[atom #333]");
+    "[variable-1 $blue]:[atom #333]");
 
   MT('variable_as_attribute',
-    "[tag foo] { [property color]:[variable-2 $blue] }");
+    "[tag foo] { [property color]:[variable-1 $blue] }");
 
   MT('numbers',
     "[tag foo] { [property padding]:[number 10px] [number 10] [number 10em] [number 8in] }");
@@ -67,24 +67,24 @@
     "[tag p] { [tag a] { [property color]:[atom #000]; } }");
 
   MT('interpolation_in_property',
-    "[tag foo] { #{[variable-2 $hello]}:[number 2]; }");
+    "[tag foo] { #{[variable-1 $hello]}:[number 1]; }");
 
   MT('interpolation_in_selector',
-    "[tag foo]#{[variable-2 $hello]} { [property color]:[atom #000]; }");
+    "[tag foo]#{[variable-1 $hello]} { [property color]:[atom #000]; }");
 
   MT('interpolation_error',
     "[tag foo]#{[error foo]} { [property color]:[atom #000]; }");
 
   MT("divide_operator",
-    "[tag foo] { [property width]:[number 4] [operator /] [number 2] }");
+    "[tag foo] { [property width]:[number 4] [operator /] [number 1] }");
 
   MT('nested_structure_with_id_selector',
     "[tag p] { [builtin #hello] { [property color]:[keyword red]; } }");
 
   MT('indent_mixin',
      "[def @mixin] [tag container] (",
-     "  [variable-2 $a]: [number 10],",
-     "  [variable-2 $b]: [number 10])",
+     "  [variable-1 $a]: [number 10],",
+     "  [variable-1 $b]: [number 10])",
      "{}");
 
   MT('indent_nested',
@@ -95,12 +95,12 @@
 
   MT('indent_parentheses',
      "[tag foo] {",
-     "  [property color]: [variable darken]([variable-2 $blue],",
+     "  [property color]: [variable darken]([variable-1 $blue],",
      "    [number 9%]);",
      "}");
 
   MT('indent_vardef',
-     "[variable-2 $name]:",
+     "[variable-1 $name]:",
      "  [string 'val'];",
      "[tag tag] {",
      "  [tag inner] {",

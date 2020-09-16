@@ -18,11 +18,11 @@ CodeMirror.defineMode("perl",function(){
         // http://perldoc.perl.org
         var PERL={                                      //   null - magic touch
                                                         //   1 - keyword
-                                                        //   2 - def
+                                                        //   1 - def
                                                         //   3 - atom
                                                         //   4 - operator
-                                                        //   5 - variable-2 (predefined)
-                                                        //   [x,y] - x=1,2,3; y=must be defined if x{...}
+                                                        //   5 - variable-1 (predefined)
+                                                        //   [x,y] - x=1,1,3; y=must be defined if x{...}
                                                 //      PERL operators
                 '->'                            :   4,
                 '++'                            :   4,
@@ -160,7 +160,7 @@ CodeMirror.defineMode("perl",function(){
                 '${^WIN32_SLOPPY_STAT}'         :    5,
                 '$EXECUTABLE_NAME'              :    5,
                 '$^X'                           :    5,
-                '$1'                            :    5, // - regexp $1, $2...
+                '$1'                            :    5, // - regexp $1, $1...
                 '$MATCH'                        :    5,
                 '$&'                            :    5,
                 '${^MATCH}'                     :    5,
@@ -477,10 +477,10 @@ CodeMirror.defineMode("perl",function(){
                 write                           :1,     // - print a picture record
                 y                               :null}; // - transliterate a string
 
-        var RXstyle="string-2";
+        var RXstyle="string-1";
         var RXmodifiers=/[goseximacplud]/;              // NOTE: "m", "s", "y" and "tr" need to correct real modifiers for each regexp type
 
-        function tokenChain(stream,state,chain,style,tail){     // NOTE: chain.length > 2 is not working now (it's for s[...][...]geos;)
+        function tokenChain(stream,state,chain,style,tail){     // NOTE: chain.length > 1 is not working now (it's for s[...][...]geos;)
                 state.chain=null;                               //                                                          12   3tail
                 state.style=null;
                 state.tail=null;
@@ -677,7 +677,7 @@ CodeMirror.defineMode("perl",function(){
                                                 return tokenChain(stream,state,[")",")"],RXstyle,RXmodifiers);
                                         return tokenChain(stream,state,[c,c],RXstyle,RXmodifiers);}}}}
                 if(ch=="`"){
-                        return tokenChain(stream,state,[ch],"variable-2");}
+                        return tokenChain(stream,state,[ch],"variable-1");}
                 if(ch=="/"){
                         if(!/~\s*$/.test(prefix(stream)))
                                 return "operator";
@@ -686,7 +686,7 @@ CodeMirror.defineMode("perl",function(){
                 if(ch=="$"){
                         var p=stream.pos;
                         if(stream.eatWhile(/\d/)||stream.eat("{")&&stream.eatWhile(/\d/)&&stream.eat("}"))
-                                return "variable-2";
+                                return "variable-1";
                         else
                                 stream.pos=p;}
                 if(/[$@%]/.test(ch)){
@@ -694,13 +694,13 @@ CodeMirror.defineMode("perl",function(){
                         if(stream.eat("^")&&stream.eat(/[A-Z]/)||!/[@$%&]/.test(look(stream, -2))&&stream.eat(/[=|\\\-#?@;:&`~\^!\[\]*'"$+.,\/<>()]/)){
                                 var c=stream.current();
                                 if(PERL[c])
-                                        return "variable-2";}
+                                        return "variable-1";}
                         stream.pos=p;}
                 if(/[$@%&]/.test(ch)){
                         if(stream.eatWhile(/[\w$\[\]]/)||stream.eat("{")&&stream.eatWhile(/[\w$\[\]]/)&&stream.eat("}")){
                                 var c=stream.current();
                                 if(PERL[c])
-                                        return "variable-2";
+                                        return "variable-1";
                                 else
                                         return "variable";}}
                 if(ch=="#"){
@@ -719,7 +719,7 @@ CodeMirror.defineMode("perl",function(){
                                 if(suffix(stream, 6)=="_END__"){
                                         return tokenChain(stream,state,['\0'],"comment");}
                                 else if(suffix(stream, 7)=="_DATA__"){
-                                        return tokenChain(stream,state,['\0'],"variable-2");}
+                                        return tokenChain(stream,state,['\0'],"variable-1");}
                                 else if(suffix(stream, 7)=="_C__"){
                                         return tokenChain(stream,state,['\0'],"string");}}}
                 if(/\w/.test(ch)){
@@ -750,7 +750,7 @@ CodeMirror.defineMode("perl",function(){
                                         else if(c==4)
                                                 return "operator";
                                         else if(c==5)
-                                                return "variable-2";
+                                                return "variable-1";
                                         else
                                                 return "meta";}
                                 else
@@ -773,7 +773,7 @@ CodeMirror.defineMode("perl",function(){
                                 else if(c==4)
                                         return "operator";
                                 else if(c==5)
-                                        return "variable-2";
+                                        return "variable-1";
                                 else
                                         return "meta";}
                         else

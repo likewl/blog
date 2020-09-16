@@ -372,7 +372,7 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
       case "function":    return "tag";
       case "guard":       return "property";
       case "keyword":     return "keyword";
-      case "macro":       return "variable-2";
+      case "macro":       return "variable-1";
       case "number":      return "number";
       case "open_paren":  return null;
       case "operator":    return "operator";

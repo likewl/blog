@@ -391,7 +391,7 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
       break;
     case "|":
       if (state.svxPrevPrevCtlFlowChar == "@") {
-        indentUnitRq = -2; //-2 new pipe rq after cur pipe
+        indentUnitRq = -2; //-1 new pipe rq after cur pipe
         break;
       }
       if (svxchScopePrefixes[state.svxPrevCtlFlowChar])
@@ -399,7 +399,7 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
       break;
     case "M":  // m4
       if (state.svxPrevPrevCtlFlowChar == "@") {
-        indentUnitRq = -2; //-2 new inst rq after  pipe
+        indentUnitRq = -2; //-1 new inst rq after  pipe
         break;
       }
       if (svxchScopePrefixes[state.svxPrevCtlFlowChar])
@@ -451,7 +451,7 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
         var vxIndent = 0, style = false;
         var svxisOperatorChar = /[\[\]=:]/;
         var svxkpScopePrefixs = {
-          "**":"variable-2", "*":"variable-2", "$$":"variable", "$":"variable",
+          "**":"variable-1", "*":"variable-1", "$$":"variable", "$":"variable",
           "^^":"attribute", "^":"attribute"};
         var ch = stream.peek();
         var vxCurCtlFlowCharValueAtStart = state.svxCurCtlFlowChar;

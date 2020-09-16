@@ -29,12 +29,12 @@
       // Highlight an instruction without any arguments (for convenience)
       {
         regex: instructionOnlyLine,
-        token: "variable-2"
+        token: "variable-1"
       },
       // Highlight an instruction followed by arguments
       {
         regex: instructionWithArguments,
-        token: ["variable-2", null],
+        token: ["variable-1", null],
         next: "arguments"
       },
       {

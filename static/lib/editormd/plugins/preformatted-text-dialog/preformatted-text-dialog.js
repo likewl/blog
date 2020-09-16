@@ -3,7 +3,7 @@
  *
  * @file        preformatted-text-dialog.js
  * @author      pandao
- * @version     1.2.0
+ * @version     1.1.0
  * @updateTime  2015-03-07
  * {@link       https://github.com/pandao/editor.md}
  * @license     MIT

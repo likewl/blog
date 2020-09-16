@@ -169,7 +169,7 @@
         return "tag";
       }
       if (source.match(/^[a-zA-Z]+/)) {
-        return "variable-2";
+        return "variable-1";
       }
       // escape characters
       if (source.match(/^\\[$&%#{}_]/)) {

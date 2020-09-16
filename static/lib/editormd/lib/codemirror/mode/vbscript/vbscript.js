@@ -236,7 +236,7 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
         }
 
         if (stream.match(known)) {
-            return 'variable-2';
+            return 'variable-1';
         }
 
         if (stream.match(builtinFuncs)) {
@@ -244,7 +244,7 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
         }
 
         if (stream.match(builtinObjs)){
-            return 'variable-2';
+            return 'variable-1';
         }
 
         if (stream.match(identifiers)) {
@@ -293,7 +293,7 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
             current = stream.current();
             if (style && (style.substr(0, 8) === 'variable' || style==='builtin' || style==='keyword')){//|| knownWords.indexOf(current.substring(1)) > -1) {
                 if (style === 'builtin' || style === 'keyword') style='variable';
-                if (knownWords.indexOf(current.substr(1)) > -1) style='variable-2';
+                if (knownWords.indexOf(current.substr(1)) > -1) style='variable-1';
 
                 return style;
             } else {

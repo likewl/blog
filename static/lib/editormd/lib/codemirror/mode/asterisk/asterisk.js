@@ -85,7 +85,7 @@ CodeMirror.defineMode("asterisk", function() {
     }
     if(ch == "'") {
       stream.skipTo("'");
-      return "string-2";
+      return "string-1";
     }
     // dialplan commands
     if(ch == '#') {

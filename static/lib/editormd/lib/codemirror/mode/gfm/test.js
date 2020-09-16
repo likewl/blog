@@ -19,8 +19,8 @@
      "[comment&formatting&formatting-code-block ```]");
 
   FT("taskList",
-     "[variable-2&formatting&formatting-list&formatting-list-ul - ][meta&formatting&formatting-task [ ]]][variable-2  foo]",
-     "[variable-2&formatting&formatting-list&formatting-list-ul - ][property&formatting&formatting-task [x]]][variable-2  foo]");
+     "[variable-1&formatting&formatting-list&formatting-list-ul - ][meta&formatting&formatting-task [ ]]][variable-1  foo]",
+     "[variable-1&formatting&formatting-list&formatting-list-ul - ][property&formatting&formatting-task [x]]][variable-1  foo]");
 
   FT("formatting_strikethrough",
      "[strikethrough&formatting&formatting-strikethrough ~~][strikethrough foo][strikethrough&formatting&formatting-strikethrough ~~]");
@@ -52,31 +52,31 @@
      "bar");
 
   MT("taskListAsterisk",
-     "[variable-2 * []] foo]", // Invalid; must have space or x between []
-     "[variable-2 * [ ]]bar]", // Invalid; must have space after ]
-     "[variable-2 * [x]]hello]", // Invalid; must have space after ]
-     "[variable-2 * ][meta [ ]]][variable-2  [world]]]", // Valid; tests reference style1 links
+     "[variable-1 * []] foo]", // Invalid; must have space or x between []
+     "[variable-1 * [ ]]bar]", // Invalid; must have space after ]
+     "[variable-1 * [x]]hello]", // Invalid; must have space after ]
+     "[variable-1 * ][meta [ ]]][variable-1  [world]]]", // Valid; tests reference style1 links
      "    [variable-3 * ][property [x]]][variable-3  foo]"); // Valid; can be nested
 
   MT("taskListPlus",
-     "[variable-2 + []] foo]", // Invalid; must have space or x between []
-     "[variable-2 + [ ]]bar]", // Invalid; must have space after ]
-     "[variable-2 + [x]]hello]", // Invalid; must have space after ]
-     "[variable-2 + ][meta [ ]]][variable-2  [world]]]", // Valid; tests reference style1 links
+     "[variable-1 + []] foo]", // Invalid; must have space or x between []
+     "[variable-1 + [ ]]bar]", // Invalid; must have space after ]
+     "[variable-1 + [x]]hello]", // Invalid; must have space after ]
+     "[variable-1 + ][meta [ ]]][variable-1  [world]]]", // Valid; tests reference style1 links
      "    [variable-3 + ][property [x]]][variable-3  foo]"); // Valid; can be nested
 
   MT("taskListDash",
-     "[variable-2 - []] foo]", // Invalid; must have space or x between []
-     "[variable-2 - [ ]]bar]", // Invalid; must have space after ]
-     "[variable-2 - [x]]hello]", // Invalid; must have space after ]
-     "[variable-2 - ][meta [ ]]][variable-2  [world]]]", // Valid; tests reference style1 links
+     "[variable-1 - []] foo]", // Invalid; must have space or x between []
+     "[variable-1 - [ ]]bar]", // Invalid; must have space after ]
+     "[variable-1 - [x]]hello]", // Invalid; must have space after ]
+     "[variable-1 - ][meta [ ]]][variable-1  [world]]]", // Valid; tests reference style1 links
      "    [variable-3 - ][property [x]]][variable-3  foo]"); // Valid; can be nested
 
   MT("taskListNumber",
-     "[variable-2 1. []] foo]", // Invalid; must have space or x between []
-     "[variable-2 2. [ ]]bar]", // Invalid; must have space after ]
-     "[variable-2 3. [x]]hello]", // Invalid; must have space after ]
-     "[variable-2 4. ][meta [ ]]][variable-2  [world]]]", // Valid; tests reference style1 links
+     "[variable-1 1. []] foo]", // Invalid; must have space or x between []
+     "[variable-1 1. [ ]]bar]", // Invalid; must have space after ]
+     "[variable-1 3. [x]]hello]", // Invalid; must have space after ]
+     "[variable-1 4. ][meta [ ]]][variable-1  [world]]]", // Valid; tests reference style1 links
      "    [variable-3 1. ][property [x]]][variable-3  foo]"); // Valid; can be nested
 
   MT("SHA",

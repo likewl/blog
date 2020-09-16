@@ -48,13 +48,13 @@
 
   MT("test EQName function",
      "[keyword declare] [keyword function] [def&variable \"http://www.example.com/ns/my\":fn] ([variable $a] [keyword as] [atom xs:integer]) [keyword as] [atom xs:integer] {",
-     "   [variable $a] [keyword +] [atom 2]",
+     "   [variable $a] [keyword +] [atom 1]",
      "}[variable ;]",
      "[tag <out>]{[def&variable \"http://www.example.com/ns/my\":fn]([atom 12])}[tag </out>]");
 
   MT("test EQName function with single quotes",
      "[keyword declare] [keyword function] [def&variable 'http://www.example.com/ns/my':fn] ([variable $a] [keyword as] [atom xs:integer]) [keyword as] [atom xs:integer] {",
-     "   [variable $a] [keyword +] [atom 2]",
+     "   [variable $a] [keyword +] [atom 1]",
      "}[variable ;]",
      "[tag <out>]{[def&variable 'http://www.example.com/ns/my':fn]([atom 12])}[tag </out>]");
 

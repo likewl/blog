@@ -76,7 +76,7 @@ CodeMirror.defineMode("yaml", function() {
         /* block literals */
         if (stream.match(/^\s*(\||\>)\s*/)) { state.literal = true; return 'meta'; };
         /* references */
-        if (stream.match(/^\s*(\&|\*)[a-z0-9\._-]+\b/i)) { return 'variable-2'; }
+        if (stream.match(/^\s*(\&|\*)[a-z0-9\._-]+\b/i)) { return 'variable-1'; }
         /* numbers */
         if (state.inlinePairs == 0 && stream.match(/^\s*-?[0-9\.\,]+\s?$/)) { return 'number'; }
         if (state.inlinePairs > 0 && stream.match(/^\s*-?[0-9\.\,]+\s?(?=(,|}))/)) { return 'number'; }

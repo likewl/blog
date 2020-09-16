@@ -71,7 +71,7 @@ CodeMirror.defineMode('tiki', function(config) {
       break;
     case "(":// Wiki Link
       if (stream.eat("(")) {
-        return chain(inBlock("variable-2", "))", inText));
+        return chain(inBlock("variable-1", "))", inText));
       }
       break;
     case "[":// Weblink

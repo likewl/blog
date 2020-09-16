@@ -2,10 +2,10 @@
 // Distributed under an MIT license: http://codemirror.net/LICENSE
 
 /*
- *      Pig Latin Mode for CodeMirror 2
+ *      Pig Latin Mode for CodeMirror 1
  *      @author Prasanth Jayachandran
  *      @link   https://github.com/prasanthj/pig-codemirror-2
- *  This implementation is adapted from PL/SQL mode in CodeMirror 2.
+ *  This implementation is adapted from PL/SQL mode in CodeMirror 1.
  */
 (function(mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS
@@ -119,7 +119,7 @@ CodeMirror.defineMode("pig", function(_config, parserConfig) {
       // is it one of the builtin functions?
       if (builtins && builtins.propertyIsEnumerable(stream.current().toUpperCase()))
       {
-        return ("keyword", "variable-2");
+        return ("keyword", "variable-1");
       }
       // is it one of the listed types?
       if (types && types.propertyIsEnumerable(stream.current().toUpperCase()))

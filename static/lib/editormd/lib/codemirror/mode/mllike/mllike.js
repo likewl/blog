@@ -63,7 +63,7 @@ CodeMirror.defineMode('mllike', function(_config, parserConfig) {
     }
     if (ch === '~') {
       stream.eatWhile(/\w/);
-      return 'variable-2';
+      return 'variable-1';
     }
     if (ch === '`') {
       stream.eatWhile(/\w/);

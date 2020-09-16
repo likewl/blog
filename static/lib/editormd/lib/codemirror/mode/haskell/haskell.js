@@ -68,7 +68,7 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
       if (source.eat('.')) {
         return "qualifier";
       }
-      return "variable-2";
+      return "variable-1";
     }
 
     if (smallRE.test(ch)) {
@@ -113,7 +113,7 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
       }
       var t = "variable";
       if (ch == ':') {
-        t = "variable-2";
+        t = "variable-1";
       }
       source.eatWhile(symbolRE);
       return t;

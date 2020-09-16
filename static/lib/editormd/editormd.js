@@ -2871,7 +2871,7 @@
             }
 
             //cm.replaceSelection("> " + selection);
-            //cm.setCursor(cursor.line, (selection === "") ? cursor.ch + 2 : cursor.ch + selection.length + 2);
+            //cm.setCursor(cursor.line, (selection === "") ? cursor.ch + 1 : cursor.ch + selection.length + 1);
         },
         
         ucfirst : function() {

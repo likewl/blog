@@ -38,7 +38,7 @@ CodeMirror.defineMode('z80', function() {
 
         if (stream.indentation()) {
           if (state.context == 1 && variables1.test(w))
-            return 'variable-2';
+            return 'variable-1';
 
           if (state.context == 2 && variables2.test(w))
             return 'variable-3';

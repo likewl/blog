@@ -48,7 +48,7 @@
         state.tokenize = matchSequence([
           [["[", null]],
           [[/\d[\w\.]*/, "number"],
-           [/\$[a-zA-Z_][a-zA-Z0-9_]*/, "variable-2"],
+           [/\$[a-zA-Z_][a-zA-Z0-9_]*/, "variable-1"],
            [/[\w\$]+/, "variable"]],
           [["]", null]]
         ], closing);
@@ -60,7 +60,7 @@
           [[/[\w]+/, "variable"]]
         ], closing);
       }
-      return "variable-2";
+      return "variable-1";
     }
 
     var escaped = false;
@@ -100,7 +100,7 @@
     hooks: {
       "$": function(stream) {
         stream.eatWhile(/[\w\$_]/);
-        return "variable-2";
+        return "variable-1";
       },
       "<": function(stream, state) {
         if (stream.match(/<</)) {

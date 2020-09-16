@@ -62,8 +62,8 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
       } else if (stream.match(/^-[\w\\\-]+/)) {
         stream.eatWhile(/[\w\\\-]/);
         if (stream.match(/^\s*:/, false))
-          return ret("variable-2", "variable-definition");
-        return ret("variable-2", "variable");
+          return ret("variable-1", "variable-definition");
+        return ret("variable-1", "variable");
       } else if (stream.match(/^\w+-/)) {
         return ret("meta", "meta");
       }
@@ -189,7 +189,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
         override = "property";
         return "maybeprop";
       } else if (nonStandardPropertyKeywords.hasOwnProperty(word)) {
-        override = "string-2";
+        override = "string-1";
         return "maybeprop";
       } else if (allowNested) {
         override = stream.match(/^\s*:(?:\s|$)/, false) ? "property" : "tag";
@@ -269,7 +269,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
       else if (propertyKeywords.hasOwnProperty(word))
         override = "property";
       else if (nonStandardPropertyKeywords.hasOwnProperty(word))
-        override = "string-2";
+        override = "string-1";
       else if (valueKeywords.hasOwnProperty(word))
         override = "atom";
       else
@@ -715,8 +715,8 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
       "$": function(stream) {
         stream.match(/^[\w-]+/);
         if (stream.match(/^\s*:/, false))
-          return ["variable-2", "variable-definition"];
-        return ["variable-2", "variable"];
+          return ["variable-1", "variable-definition"];
+        return ["variable-1", "variable"];
       },
       "#": function(stream) {
         if (!stream.eat("{")) return false;
@@ -752,8 +752,8 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
         if (stream.match(/^(charset|document|font-face|import|(-(moz|ms|o|webkit)-)?keyframes|media|namespace|page|supports)\b/, false)) return false;
         stream.eatWhile(/[\w\\\-]/);
         if (stream.match(/^\s*:/, false))
-          return ["variable-2", "variable-definition"];
-        return ["variable-2", "variable"];
+          return ["variable-1", "variable-definition"];
+        return ["variable-1", "variable"];
       },
       "&": function() {
         return ["atom", "atom"];

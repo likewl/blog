@@ -90,7 +90,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       // .table_name (ODBC)
       // // ref: http://dev.mysql.com/doc/refman/5.6/en/identifier-qualifiers.html
       if (support.ODBCdotTable == true && stream.match(/^[a-zA-Z_]+/)) {
-        return "variable-2";
+        return "variable-1";
       }
     } else if (operatorChars.test(ch)) {
       // operators
@@ -111,7 +111,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       if (atoms.hasOwnProperty(word)) return "atom";
       if (builtin.hasOwnProperty(word)) return "builtin";
       if (keywords.hasOwnProperty(word)) return "keyword";
-      if (client.hasOwnProperty(word)) return "string-2";
+      if (client.hasOwnProperty(word)) return "string-1";
       return null;
     }
   }
@@ -211,10 +211,10 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
     // ref: http://dev.mysql.com/doc/refman/5.6/en/identifier-qualifiers.html
     var ch;
     while ((ch = stream.next()) != null) {
-      if (ch == "`" && !stream.eat("`")) return "variable-2";
+      if (ch == "`" && !stream.eat("`")) return "variable-1";
     }
     stream.backUp(stream.current().length - 1);
-    return stream.eatWhile(/\w/) ? "variable-2" : null;
+    return stream.eatWhile(/\w/) ? "variable-1" : null;
   }
 
   // variable token
@@ -231,15 +231,15 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
 
     if (stream.eat("'")) {
       stream.match(/^.*'/);
-      return "variable-2";
+      return "variable-1";
     } else if (stream.eat('"')) {
       stream.match(/^.*"/);
-      return "variable-2";
+      return "variable-1";
     } else if (stream.eat("`")) {
       stream.match(/^.*`/);
-      return "variable-2";
+      return "variable-1";
     } else if (stream.match(/^[0-9a-zA-Z$\.\_]+/)) {
-      return "variable-2";
+      return "variable-1";
     }
     return null;
   };
@@ -253,7 +253,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
     }
     // \g, etc
     // ref: http://dev.mysql.com/doc/refman/5.5/en/mysql-commands.html
-    return stream.match(/^[a-zA-Z.#!?]/) ? "variable-2" : null;
+    return stream.match(/^[a-zA-Z.#!?]/) ? "variable-1" : null;
   }
 
   // these keywords are used by all SQL dialects (however, a mode can still overwrite it)

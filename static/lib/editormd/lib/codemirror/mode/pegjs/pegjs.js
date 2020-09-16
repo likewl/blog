@@ -99,7 +99,7 @@ CodeMirror.defineMode("pegjs", function (config) {
         if (stream.peek() === ':') {
           return 'variable';
         }
-        return 'variable-2';
+        return 'variable-1';
       } else if (['[', ']', '(', ')'].indexOf(stream.peek()) != -1) {
         stream.next();
         return 'bracket';

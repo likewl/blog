@@ -85,7 +85,7 @@
             if (stream.match(/^}/)) {
               state.indent -= 2 * config.indentUnit;
               state.soyState.pop();
-              return "variable-2";
+              return "variable-1";
             }
             stream.next();
             return null;
@@ -137,7 +137,7 @@
         } else if (stream.match(/^\{\$\w*/)) {
           state.indent += 2 * config.indentUnit;
           state.soyState.push("variable");
-          return "variable-2";
+          return "variable-1";
         } else if (stream.match(/^\{literal}/)) {
           state.indent += config.indentUnit;
           state.soyState.push("literal");

@@ -60,7 +60,7 @@ CodeMirror.defineMode("http", function() {
   function requestPath(stream, state) {
     stream.eatWhile(/\S/);
     state.cur = requestProtocol;
-    return "string-2";
+    return "string-1";
   }
 
   function requestProtocol(stream, state) {

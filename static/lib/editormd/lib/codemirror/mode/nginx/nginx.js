@@ -47,10 +47,10 @@ CodeMirror.defineMode("nginx", function(config) {
       return "keyword";
     }
     else if (keywords_block.propertyIsEnumerable(cur)) {
-      return "variable-2";
+      return "variable-1";
     }
     else if (keywords_important.propertyIsEnumerable(cur)) {
-      return "string-2";
+      return "string-1";
     }
     /**/
 

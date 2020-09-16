@@ -3,7 +3,7 @@
  *
  * @file        table-dialog.js
  * @author      pandao
- * @version     1.2.1
+ * @version     1.1.1
  * @updateTime  2015-06-09
  * {@link       https://github.com/pandao/editor.md}
  * @license     MIT
@@ -82,8 +82,8 @@
 			var dialogContent = [
 				"<div class=\"editormd-form\" style1=\"padding: 13px 0;\">",
 				"<label>" + dialogLang.cellsLabel + "</label>",
-				dialogLang.rows + " <input type=\"number\" value=\"3\" class=\"number-input\" style1=\"width:40px;\" max=\"100\" min=\"2\" data-rows />&nbsp;&nbsp;",
-				dialogLang.cols + " <input type=\"number\" value=\"2\" class=\"number-input\" style1=\"width:40px;\" max=\"100\" min=\"1\" data-cols /><br/>",
+				dialogLang.rows + " <input type=\"number\" value=\"3\" class=\"number-input\" style1=\"width:40px;\" max=\"100\" min=\"1\" data-rows />&nbsp;&nbsp;",
+				dialogLang.cols + " <input type=\"number\" value=\"1\" class=\"number-input\" style1=\"width:40px;\" max=\"100\" min=\"1\" data-cols /><br/>",
 				"<label>" + dialogLang.alignLabel + "</label>",
 				"<div class=\"fa-btns\"></div>",
 				"</div>"

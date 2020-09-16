@@ -42,7 +42,7 @@ CodeMirror.defineMode("sparql", function(config) {
         return "operator";
       }
       stream.match(/^[\w\d]*/);
-      return "variable-2";
+      return "variable-1";
     }
     else if (ch == "<" && !stream.match(/^[\s\u00a0=]/, false)) {
       stream.match(/^[^\s\u00a0>]*>?/);

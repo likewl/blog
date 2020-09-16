@@ -20,6 +20,9 @@ func CommentHandler(c *gin.Context) {
 	CommentEmail := c.PostForm("email")
 	CommentContent := c.PostForm("content")
 	typeName := c.PostForm("typeName")
+	if CommentName == "" || CommentEmail == "" || CommentContent == "" {
+		return
+	}
 	user := dao.SelectUser()
 	one := dao.SelectCommentByReComment(CommentName, CommentEmail)
 	//找博主
