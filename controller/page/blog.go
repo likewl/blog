@@ -19,9 +19,9 @@ func BlogHandler(c *gin.Context) {
 		c.HTML(http.StatusNotFound, "404.html", nil)
 		return
 	}
-	oneType := dao.SelectOneType(blog.TypeId)
+	oneType := dao.SelectOneType(blog.Id)
+	fmt.Println(oneType)
 	comments := dao.SelectCommentByBlog(id)
-	fmt.Println(err, "错误111111111")
 	tagName := dao.SelectTagNameBlog(id)
 	blog.Numb = blog.Numb + 1
 	dao.UpdateBlog(blog)
