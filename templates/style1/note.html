@@ -41,12 +41,12 @@
                     {{if eq .page 1}}
                         <li class="disabled"><span>&laquo; Previous</span></li>
                     {{else }}
-                        <li><a href="/types/{{.name}}?page={{.page|notAdd}}" rel="next">&laquo; Previous</a></li>
+                        <li><a href="/notes/{{.name}}?page={{.page|notAdd}}" rel="next">&laquo; Previous</a></li>
                     {{end}}
                     {{if lt .count 10}}
                         <li class="disabled"><span>Next &raquo;</span></li>
                     {{else}}
-                        <li><a href="/types/{{.name}}?page={{.page|add}}" rel="next">Next &raquo;</a></li>
+                        <li><a href="/notes/{{.name}}?page={{.page|add}}" rel="next">Next &raquo;</a></li>
                     {{end}}
                 </ul>
 
