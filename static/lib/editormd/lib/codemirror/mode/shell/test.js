@@ -46,7 +46,7 @@
      "text [comment # Blurb]");
 
   MT("numbers",
-     "[number 0] [number 1] [number 1]");
+     "[number 0] [number 1] [number 2]");
   MT("keywords",
      "[keyword while] [atom true]; [keyword do]",
      "  [builtin sleep] [number 3]",

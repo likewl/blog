@@ -54,7 +54,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   var header   = 'header'
   ,   code     = 'comment'
   ,   quote    = 'quote'
-  ,   list1    = 'variable-1'
+  ,   list1    = 'variable-2'
   ,   list2    = 'variable-3'
   ,   list3    = 'keyword'
   ,   hr       = 'hr'

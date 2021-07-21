@@ -94,7 +94,7 @@ CodeMirror.defineMode("rust", function() {
     content = stream.current();
     if (stream.match(/^::\w/)) {
       stream.backUp(1);
-      return r("prefix", "variable-1");
+      return r("prefix", "variable-2");
     }
     if (state.keywords.propertyIsEnumerable(content))
       return r(state.keywords[content], content.match(/true|false/) ? "atom" : "keyword");

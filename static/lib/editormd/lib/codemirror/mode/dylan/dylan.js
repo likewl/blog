@@ -113,7 +113,7 @@ CodeMirror.defineMode("dylan", function(_config) {
   var patternStyles = {
     symbolKeyword: "atom",
     symbolClass: "tag",
-    symbolGlobal: "variable-1",
+    symbolGlobal: "variable-2",
     symbolConstant: "variable-3"
   };
 
@@ -194,7 +194,7 @@ CodeMirror.defineMode("dylan", function(_config) {
       ch = stream.peek();
       if (ch == '"') {
         stream.next();
-        return chain(stream, state, tokenString('"', "symbol", "string-1"));
+        return chain(stream, state, tokenString('"', "symbol", "string-2"));
       }
       // Binary number
       else if (ch == "b") {
@@ -242,7 +242,7 @@ CodeMirror.defineMode("dylan", function(_config) {
         return ret("variable", "variable");
       } else {
         stream.next();
-        return ret("other", "variable-1");
+        return ret("other", "variable-2");
       }
     }
   }

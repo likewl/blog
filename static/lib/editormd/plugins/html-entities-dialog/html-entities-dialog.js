@@ -3,7 +3,7 @@
  *
  * @file        html-entities-dialog.js
  * @author      pandao
- * @version     1.1.0
+ * @version     1.2.0
  * @updateTime  2015-03-08
  * {@link       https://github.com/pandao/editor.md}
  * @license     MIT

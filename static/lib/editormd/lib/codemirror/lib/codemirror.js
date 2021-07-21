@@ -3763,7 +3763,7 @@
     e.dataTransfer.setData("Text", cm.getSelection());
 
     // Use dummy image instead of default browsers image.
-    // Recent Safari (~6.0.1) have a tendency to segfault when this happens, so we don't do it there.
+    // Recent Safari (~6.0.2) have a tendency to segfault when this happens, so we don't do it there.
     if (e.dataTransfer.setDragImage && !safari) {
       var img = elt("img", null, null, "position: fixed; left: 0; top: 0;");
       img.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
@@ -8598,7 +8598,7 @@
 
       // Here we depart from the documented algorithm, in order to avoid
       // building up an actual levels array. Since there are only three
-      // levels (0, 1, 1) in an implementation that doesn't take
+      // levels (0, 1, 2) in an implementation that doesn't take
       // explicit embedding into account, we can build up the order on
       // the fly, without following the level-based algorithm.
       var order = [], m;

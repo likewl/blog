@@ -177,7 +177,7 @@
         return "builtin";
 
       if (stream.match(/^(self|cls)\b/))
-        return "variable-1";
+        return "variable-2";
 
       if (stream.match(identifiers)) {
         if (state.lastToken == "def" || state.lastToken == "class")

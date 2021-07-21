@@ -60,14 +60,14 @@ CodeMirror.defineMode("ruby", function(config) {
         }
         stream.backUp(stream.current().length - currentIndex);
         if (balance == 0)
-          return chain(readQuoted(ch, "string-1", true), stream, state);
+          return chain(readQuoted(ch, "string-2", true), stream, state);
       }
       return "operator";
     } else if (ch == "%") {
       var style = "string", embed = true;
       if (stream.eat("s")) style = "atom";
       else if (stream.eat(/[WQ]/)) style = "string";
-      else if (stream.eat(/[r]/)) style = "string-1";
+      else if (stream.eat(/[r]/)) style = "string-2";
       else if (stream.eat(/[wxq]/)) { style = "string"; embed = false; }
       var delim = stream.eat(/[^\w\s=]/);
       if (!delim) return "operator";
@@ -117,7 +117,7 @@ CodeMirror.defineMode("ruby", function(config) {
     } else if (ch == "@" && stream.match(/^@?[a-zA-Z_\xa1-\uffff]/)) {
       stream.eat("@");
       stream.eatWhile(/[\w\xa1-\uffff]/);
-      return "variable-1";
+      return "variable-2";
     } else if (ch == "$") {
       if (stream.eat(/[a-zA-Z_]/)) {
         stream.eatWhile(/[\w]/);

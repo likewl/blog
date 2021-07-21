@@ -6,11 +6,13 @@ import (
 	"blog/dao"
 	"blog/middleware"
 	"encoding/gob"
+	"github.com/fvbock/endless"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"html/template"
+	"log"
 )
 
 /*
@@ -111,12 +113,12 @@ func main() {
 	//404
 	r.NoRoute(page.NotFoundHandler)
 
-	//启动服务
-	r.Run(":81")
+	////启动服务
+	//r.Run(":81")
 
 	//api优雅重启接口初始化
-	//if err := endless.ListenAndServe(":81", r); err!=nil{
-	//	log.Fatalf("listen: %s\n", err)
-	//}
+	if err := endless.ListenAndServe(":81", r); err!=nil{
+		log.Fatalf("listen: %s\n", err)
+	}
 
 }

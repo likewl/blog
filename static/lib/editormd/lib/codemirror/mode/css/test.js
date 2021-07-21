@@ -86,7 +86,7 @@
   MT("indent_tagSelector",
      "[tag strong], [tag em] {",
      "  [property background]: [atom rgba](",
-     "    [number 255], [number 255], [number 0], [number .1]",
+     "    [number 255], [number 255], [number 0], [number .2]",
      "  );",
      "}");
 
@@ -135,10 +135,10 @@
 
   MT("css_variable",
      ":[variable-3 root] {",
-     "  [variable-1 --main-color]: [atom #06c];",
+     "  [variable-2 --main-color]: [atom #06c];",
      "}",
      "[tag h1][builtin #foo] {",
-     "  [property color]: [atom var]([variable-1 --main-color]);",
+     "  [property color]: [atom var]([variable-2 --main-color]);",
      "}");
 
   MT("supports",

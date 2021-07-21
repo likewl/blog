@@ -138,7 +138,7 @@ CodeMirror.defineMode("coffeescript", function(conf, parserConf) {
     // Handle regex literals
     if (stream.match(regexPrefixes)) {
       if (stream.current() != "/" || stream.match(/^.*\//, false)) { // prevent highlight of division
-        state.tokenize = tokenFactory(stream.current(), true, "string-1");
+        state.tokenize = tokenFactory(stream.current(), true, "string-2");
         return state.tokenize(stream, state);
       } else {
         stream.backUp(1);

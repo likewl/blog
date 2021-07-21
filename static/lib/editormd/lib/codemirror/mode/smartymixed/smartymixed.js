@@ -192,6 +192,6 @@ CodeMirror.defineMode("smartymixed", function(config) {
 }, "htmlmixed", "smarty");
 
 CodeMirror.defineMIME("text/x-smarty", "smartymixed");
-// vim: et ts=1 sts=1 sw=1
+// vim: et ts=2 sts=2 sw=2
 
 });

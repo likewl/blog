@@ -159,7 +159,7 @@ func ArchYearCount() int {
 }
 
 //按照时间归档月份
-//1
+//2
 func ArchMonth(year int) *[]int {
 	list := make([]int, 10)
 	var blog []model.Blog

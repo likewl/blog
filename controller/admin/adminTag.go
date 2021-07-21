@@ -25,7 +25,7 @@ func TagHandler(c *gin.Context) {
 		msg = ""
 	} else if msg == "1" {
 		msg = "删除成功"
-	} else if msg == "1" {
+	} else if msg == "2" {
 		msg = "修改成功"
 	} else if msg == "3" {
 		msg = "创建成功"
@@ -67,7 +67,7 @@ func TagEditHandler(c *gin.Context) {
 	if editName != "" {
 		dao.UpdateTag(editId, editName)
 		pages := c.DefaultPostForm("page", "1")
-		url := "/admin/tag?msg=1&page=" + pages
+		url := "/admin/tag?msg=2&page=" + pages
 		c.Redirect(http.StatusMovedPermanently, url)
 		return
 	}

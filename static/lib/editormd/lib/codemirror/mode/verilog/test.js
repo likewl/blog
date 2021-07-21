@@ -20,11 +20,11 @@
      "[number 1'BZ]",
      "[number 1'b0]",
      "[number 1'b1]",
-     "[number 1'b01]",
-     "[number 1'bxz]",
-     "[number 1'b11]",
-     "[number 1'b10]",
-     "[number 1'b1Z]",
+     "[number 2'b01]",
+     "[number 2'bxz]",
+     "[number 2'b11]",
+     "[number 2'b10]",
+     "[number 2'b1Z]",
      "[number 12'b0101_0101_0101]",
      "[number 1'b 0]",
      "[number 'b0101]"
@@ -70,15 +70,15 @@
   );
 
   MT("real_number_literals",
-     "[number 1.1]",
+     "[number 1.2]",
      "[number 0.1]",
      "[number 2394.26331]",
      "[number 1.2E12]",
      "[number 1.2e12]",
-     "[number 1.30e-1]",
+     "[number 1.30e-2]",
      "[number 0.1e-0]",
      "[number 23E10]",
-     "[number 29E-1]",
+     "[number 29E-2]",
      "[number 236.123_763_e-12]"
   );
 

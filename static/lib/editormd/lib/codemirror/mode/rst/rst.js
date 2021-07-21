@@ -22,7 +22,7 @@ CodeMirror.defineMode('rst', function (config, options) {
   var rx_negative = /^(?:\s\-[\d]+(?:[\.,]\d+)*)/;
 
   var rx_uri_protocol = "[Hh][Tt][Tt][Pp][Ss]?://";
-  var rx_uri_domain = "(?:[\\d\\w.-]+)\\.(?:\\w{1,6})";
+  var rx_uri_domain = "(?:[\\d\\w.-]+)\\.(?:\\w{2,6})";
   var rx_uri_path = "(?:/[\\d\\w\\#\\%\\&\\-\\.\\,\\/\\:\\=\\?\\~]+)*";
   var rx_uri = new RegExp("^" + rx_uri_protocol + rx_uri_domain + rx_uri_path);
 
@@ -34,7 +34,7 @@ CodeMirror.defineMode('rst', function (config, options) {
       if (stream.match(rx_emphasis) && stream.match (/\W+|$/, false))
         return 'em';
       if (stream.match(rx_literal) && stream.match (/\W+|$/, false))
-        return 'string-1';
+        return 'string-2';
       if (stream.match(rx_number))
         return 'number';
       if (stream.match(rx_positive))
@@ -113,7 +113,7 @@ CodeMirror.defineMode('rst-base', function (config) {
   var rx_directive = new RegExp(
     format('^{0}::{1}', REF_NAME, TAIL));
   var rx_substitution = new RegExp(
-    format('^\\|{0}\\|{1}{1}::{3}', TEXT1, SEPA, REF_NAME, TAIL));
+    format('^\\|{0}\\|{1}{2}::{3}', TEXT1, SEPA, REF_NAME, TAIL));
   var rx_footnote = new RegExp(
     format('^\\[(?:\\d+|#{0}?|\\*)]{1}', REF_NAME, TAIL));
   var rx_citation = new RegExp(
@@ -131,9 +131,9 @@ CodeMirror.defineMode('rst-base', function (config) {
     format('^`{0}`_', TEXT2));
 
   var rx_role_pre = new RegExp(
-    format('^:{0}:`{1}`{1}', NAME, TEXT2, TAIL));
+    format('^:{0}:`{1}`{2}', NAME, TEXT2, TAIL));
   var rx_role_suf = new RegExp(
-    format('^`{1}`:{0}:{1}', NAME, TEXT2, TAIL));
+    format('^`{1}`:{0}:{2}', NAME, TEXT2, TAIL));
   var rx_role = new RegExp(
     format('^:{0}:{1}', NAME, TAIL));
 
@@ -291,7 +291,7 @@ CodeMirror.defineMode('rst-base', function (config) {
       case 0:
         change(state, to_normal, context(rx_substitution_ref, 1));
         stream.match(rx_substitution_text);
-        token = 'variable-1';
+        token = 'variable-2';
         break;
       case 1:
         change(state, to_normal, context(rx_substitution_ref, 2));
@@ -363,7 +363,7 @@ CodeMirror.defineMode('rst-base', function (config) {
       case 0:
         change(state, to_explicit, context(rx_substitution, 1));
         stream.match(rx_substitution_text);
-        token = 'variable-1';
+        token = 'variable-2';
         break;
       case 1:
         change(state, to_explicit, context(rx_substitution, 2));

@@ -8,10 +8,10 @@
   function MT(name) { test.mode(name, mode, Array.prototype.slice.call(arguments, 1), "less"); }
 
   MT("variable",
-     "[variable-1 @base]: [atom #f04615];",
+     "[variable-2 @base]: [atom #f04615];",
      "[qualifier .class] {",
      "  [property width]: [variable percentage]([number 0.5]); [comment // returns `50%`]",
-     "  [property color]: [variable saturate]([variable-1 @base], [number 5%]);",
+     "  [property color]: [variable saturate]([variable-2 @base], [number 5%]);",
      "}");
 
   MT("amp",
@@ -25,18 +25,18 @@
      "}");
 
   MT("mixin",
-     "[qualifier .mixin] ([variable dark]; [variable-1 @color]) {",
-     "  [property color]: [variable darken]([variable-1 @color], [number 10%]);",
+     "[qualifier .mixin] ([variable dark]; [variable-2 @color]) {",
+     "  [property color]: [variable darken]([variable-2 @color], [number 10%]);",
      "}",
-     "[qualifier .mixin] ([variable light]; [variable-1 @color]) {",
-     "  [property color]: [variable lighten]([variable-1 @color], [number 10%]);",
+     "[qualifier .mixin] ([variable light]; [variable-2 @color]) {",
+     "  [property color]: [variable lighten]([variable-2 @color], [number 10%]);",
      "}",
-     "[qualifier .mixin] ([variable-1 @_]; [variable-1 @color]) {",
+     "[qualifier .mixin] ([variable-2 @_]; [variable-2 @color]) {",
      "  [property display]: [atom block];",
      "}",
-     "[variable-1 @switch]: [variable light];",
+     "[variable-2 @switch]: [variable light];",
      "[qualifier .class] {",
-     "  [qualifier .mixin]([variable-1 @switch]; [atom #888]);",
+     "  [qualifier .mixin]([variable-2 @switch]; [atom #888]);",
      "}");
 
   MT("nest",

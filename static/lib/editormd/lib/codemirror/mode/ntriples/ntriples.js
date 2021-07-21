@@ -128,7 +128,7 @@ CodeMirror.defineMode("ntriples", function() {
         var parsedAnchor = '';
         stream.eatWhile(function(c) { if(c != '>' && c != ' ') { parsedAnchor+= c; return true; } return false;});
         state.anchors.push(parsedAnchor);
-        return 'variable-1';
+        return 'variable-2';
       }
       if(ch == '>') {
           transitState(state, '>');
@@ -159,7 +159,7 @@ CodeMirror.defineMode("ntriples", function() {
           state.langs.push(parsedLang);
           stream.next();
           transitState(state, ' ');
-          return 'string-1';
+          return 'string-2';
       }
       if( ch == '^' ) {
           stream.next();

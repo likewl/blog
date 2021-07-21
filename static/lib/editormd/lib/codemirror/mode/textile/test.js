@@ -108,7 +108,7 @@
       '[header&header-1 h1. foo]');
 
   MT('h2',
-      '[header&header-1 h2. foo]');
+      '[header&header-2 h2. foo]');
 
   MT('h3',
       '[header&header-3 h3. foo]');
@@ -130,7 +130,7 @@
       '',
       'Some text.',
       '',
-      '[header&header-1 h2. Heading 1]',
+      '[header&header-2 h2. Heading 2]',
       '',
       'More text.');
 
@@ -145,66 +145,66 @@
       'foo',
       'bar',
       '',
-      '[variable-1 * foo]',
-      '[variable-1 * bar]');
+      '[variable-2 * foo]',
+      '[variable-2 * bar]');
 
   MT('ulNoBlank',
       'foo',
       'bar',
-      '[variable-1 * foo]',
-      '[variable-1 * bar]');
+      '[variable-2 * foo]',
+      '[variable-2 * bar]');
 
   MT('ol',
       'foo',
       'bar',
       '',
-      '[variable-1 # foo]',
-      '[variable-1 # bar]');
+      '[variable-2 # foo]',
+      '[variable-2 # bar]');
 
   MT('olNoBlank',
       'foo',
       'bar',
-      '[variable-1 # foo]',
-      '[variable-1 # bar]');
+      '[variable-2 # foo]',
+      '[variable-2 # bar]');
 
   MT('ulFormatting',
-      '[variable-1 * ][variable-1&em _foo_][variable-1  bar]',
-      '[variable-1 * ][variable-1&strong *][variable-1&em&strong _foo_]' +
-        '[variable-1&strong *][variable-1  bar]',
-      '[variable-1 * ][variable-1&strong *foo*][variable-1  bar]');
+      '[variable-2 * ][variable-2&em _foo_][variable-2  bar]',
+      '[variable-2 * ][variable-2&strong *][variable-2&em&strong _foo_]' +
+        '[variable-2&strong *][variable-2  bar]',
+      '[variable-2 * ][variable-2&strong *foo*][variable-2  bar]');
 
   MT('olFormatting',
-      '[variable-1 # ][variable-1&em _foo_][variable-1  bar]',
-      '[variable-1 # ][variable-1&strong *][variable-1&em&strong _foo_]' +
-        '[variable-1&strong *][variable-1  bar]',
-      '[variable-1 # ][variable-1&strong *foo*][variable-1  bar]');
+      '[variable-2 # ][variable-2&em _foo_][variable-2  bar]',
+      '[variable-2 # ][variable-2&strong *][variable-2&em&strong _foo_]' +
+        '[variable-2&strong *][variable-2  bar]',
+      '[variable-2 # ][variable-2&strong *foo*][variable-2  bar]');
 
   MT('ulNested',
-      '[variable-1 * foo]',
+      '[variable-2 * foo]',
       '[variable-3 ** bar]',
       '[keyword *** bar]',
-      '[variable-1 **** bar]',
+      '[variable-2 **** bar]',
       '[variable-3 ** bar]');
 
   MT('olNested',
-      '[variable-1 # foo]',
+      '[variable-2 # foo]',
       '[variable-3 ## bar]',
       '[keyword ### bar]',
-      '[variable-1 #### bar]',
+      '[variable-2 #### bar]',
       '[variable-3 ## bar]');
 
   MT('ulNestedWithOl',
-      '[variable-1 * foo]',
+      '[variable-2 * foo]',
       '[variable-3 ## bar]',
       '[keyword *** bar]',
-      '[variable-1 #### bar]',
+      '[variable-2 #### bar]',
       '[variable-3 ** bar]');
 
   MT('olNestedWithUl',
-      '[variable-1 # foo]',
+      '[variable-2 # foo]',
       '[variable-3 ** bar]',
       '[keyword ### bar]',
-      '[variable-1 **** bar]',
+      '[variable-2 **** bar]',
       '[variable-3 ## bar]');
 
   MT('definitionList',
@@ -362,8 +362,8 @@
 
   MT('tableWithAttributes',
       '[variable-3&operator |_. name |_. age|]',
-      '[variable-3 |][variable-3&attribute /1.][variable-3  Jim |]',
-      '[variable-3 |][variable-3&attribute \\1{color: red}.][variable-3  Sam |]');
+      '[variable-3 |][variable-3&attribute /2.][variable-3  Jim |]',
+      '[variable-3 |][variable-3&attribute \\2{color: red}.][variable-3  Sam |]');
 
   /*
    * HTML
@@ -375,8 +375,8 @@
       '',
       '[header&header-1 h1. Welcome]',
       '',
-      '[variable-1 * Item one]',
-      '[variable-1 * Item two]',
+      '[variable-2 * Item one]',
+      '[variable-2 * Item two]',
       '',
       '[comment <a href="http://example.com">Example</a>]',
       '',
@@ -391,10 +391,10 @@
    */
 
   MT('notextile',
-    '[string-1 notextile. *No* formatting]');
+    '[string-2 notextile. *No* formatting]');
 
   MT('notextileInline',
-      'Use [string-1 ==*asterisks*==] for [strong *strong*] text.');
+      'Use [string-2 ==*asterisks*==] for [strong *strong*] text.');
 
   MT('notextileWithPre',
       '[operator pre. *No* formatting]');

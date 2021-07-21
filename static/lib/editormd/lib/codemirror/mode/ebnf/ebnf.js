@@ -143,7 +143,7 @@
         }
         case "\\":
           if (stream.match(/[\][a-z]+/)) {
-            return "string-1";
+            return "string-2";
           }
         case ".":
           if (stream.match(".")) {
@@ -179,7 +179,7 @@
           } else if (stream.match(/(?=[\s\n]*[:=])/)) {
             return "def";
           }
-          return "variable-1";
+          return "variable-2";
         } else if (["[", "]", "(", ")"].indexOf(stream.peek()) != -1) {
           stream.next();
           return "bracket";

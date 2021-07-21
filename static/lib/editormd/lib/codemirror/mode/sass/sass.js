@@ -175,7 +175,7 @@ CodeMirror.defineMode("sass", function(config) {
       if (ch === "$") {
         stream.next();
         stream.eatWhile(/[\w-]/);
-        return "variable-1";
+        return "variable-2";
       }
 
       // Numbers

@@ -145,39 +145,39 @@ CodeMirror.defineMode("gas", function(_config, parserConfig) {
     lineCommentStartSymbol = "#";
 
     registers.ax  = "variable";
-    registers.eax = "variable-1";
+    registers.eax = "variable-2";
     registers.rax = "variable-3";
 
     registers.bx  = "variable";
-    registers.ebx = "variable-1";
+    registers.ebx = "variable-2";
     registers.rbx = "variable-3";
 
     registers.cx  = "variable";
-    registers.ecx = "variable-1";
+    registers.ecx = "variable-2";
     registers.rcx = "variable-3";
 
     registers.dx  = "variable";
-    registers.edx = "variable-1";
+    registers.edx = "variable-2";
     registers.rdx = "variable-3";
 
     registers.si  = "variable";
-    registers.esi = "variable-1";
+    registers.esi = "variable-2";
     registers.rsi = "variable-3";
 
     registers.di  = "variable";
-    registers.edi = "variable-1";
+    registers.edi = "variable-2";
     registers.rdi = "variable-3";
 
     registers.sp  = "variable";
-    registers.esp = "variable-1";
+    registers.esp = "variable-2";
     registers.rsp = "variable-3";
 
     registers.bp  = "variable";
-    registers.ebp = "variable-1";
+    registers.ebp = "variable-2";
     registers.rbp = "variable-3";
 
     registers.ip  = "variable";
-    registers.eip = "variable-1";
+    registers.eip = "variable-2";
     registers.rip = "variable-3";
 
     registers.cs  = "keyword";
@@ -209,9 +209,9 @@ CodeMirror.defineMode("gas", function(_config, parserConfig) {
     registers.r11 = "variable";
     registers.r12 = "variable";
 
-    registers.sp  = "variable-1";
-    registers.lr  = "variable-1";
-    registers.pc  = "variable-1";
+    registers.sp  = "variable-2";
+    registers.lr  = "variable-2";
+    registers.pc  = "variable-2";
     registers.r13 = registers.sp;
     registers.r14 = registers.lr;
     registers.r15 = registers.pc;

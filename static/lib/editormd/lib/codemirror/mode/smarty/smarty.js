@@ -2,7 +2,7 @@
 // Distributed under an MIT license: http://codemirror.net/LICENSE
 
 /**
- * Smarty 1 and 3 mode.
+ * Smarty 2 and 3 mode.
  */
 
 (function(mod) {
@@ -104,7 +104,7 @@ CodeMirror.defineMode("smarty", function(config) {
       var ch = stream.next();
       if (ch == "$") {
         stream.eatWhile(regs.validIdentifier);
-        return helpers.cont("variable-1", "variable");
+        return helpers.cont("variable-2", "variable");
       } else if (ch == "|") {
         return helpers.cont("operator", "pipe");
       } else if (ch == ".") {

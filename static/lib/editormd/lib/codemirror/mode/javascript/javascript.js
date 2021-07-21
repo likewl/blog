@@ -119,7 +119,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
                state.lastType == "sof" || /^[\[{}\(,;:]$/.test(state.lastType)) {
         readRegexp(stream);
         stream.match(/^\b(([gimyu])(?![gimyu]*\2))+\b/);
-        return ret("regexp", "string-1");
+        return ret("regexp", "string-2");
       } else {
         stream.eatWhile(isOperatorChar);
         return ret("operator", "operator", stream.current());
@@ -178,7 +178,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
       }
       escaped = !escaped && next == "\\";
     }
-    return ret("quasi", "string-1", stream.current());
+    return ret("quasi", "string-2", stream.current());
   }
 
   var brackets = "([{}])";
@@ -252,7 +252,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
         while(cc.length && cc[cc.length - 1].lex)
           cc.pop()();
         if (cx.marked) return cx.marked;
-        if (type == "variable" && inScope(state, content)) return "variable-1";
+        if (type == "variable" && inScope(state, content)) return "variable-2";
         return style;
       }
     }
@@ -412,7 +412,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
   }
   function continueQuasi(type) {
     if (type == "}") {
-      cx.marked = "string-1";
+      cx.marked = "string-2";
       cx.state.tokenize = tokenQuasi;
       return cont(quasi);
     }

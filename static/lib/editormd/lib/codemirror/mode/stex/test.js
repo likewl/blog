@@ -17,7 +17,7 @@
 
   MT("beginEndEquation",
      "[tag \\begin][bracket {][atom equation][bracket }]",
-     "  E=mc^1",
+     "  E=mc^2",
      "[tag \\end][bracket {][atom equation][bracket }]");
 
   MT("beginModule",
@@ -82,7 +82,7 @@
      "section [tag \\S][atom 1]");
 
   MT("textTagNumber",
-     "para [tag \\P][atom 1]");
+     "para [tag \\P][atom 2]");
 
   MT("thinspace",
      "x[tag \\,]y");
@@ -106,17 +106,17 @@
      "[tag \\newcommand][bracket {][tag \\pop][bracket }]");
 
   MT("inlineMathTagFollowedByNumber",
-     "[keyword $][tag \\pi][number 1][keyword $]");
+     "[keyword $][tag \\pi][number 2][keyword $]");
 
   MT("inlineMath",
-     "[keyword $][number 3][variable-1 x][tag ^][number 1.45]-[tag \\sqrt][bracket {][tag \\$\\alpha][bracket }] = [number 1][keyword $] other text");
+     "[keyword $][number 3][variable-2 x][tag ^][number 2.45]-[tag \\sqrt][bracket {][tag \\$\\alpha][bracket }] = [number 2][keyword $] other text");
 
   MT("displayMath",
-     "More [keyword $$]\t[variable-1 S][tag ^][variable-1 n][tag \\sum] [variable-1 i][keyword $$] other text");
+     "More [keyword $$]\t[variable-2 S][tag ^][variable-2 n][tag \\sum] [variable-2 i][keyword $$] other text");
 
   MT("mathWithComment",
-     "[keyword $][variable-1 x] [comment % $]",
-     "[variable-1 y][keyword $] other text");
+     "[keyword $][variable-2 x] [comment % $]",
+     "[variable-2 y][keyword $] other text");
 
   MT("lineBreakArgument",
     "[tag \\\\][bracket [[][atom 1cm][bracket ]]]");

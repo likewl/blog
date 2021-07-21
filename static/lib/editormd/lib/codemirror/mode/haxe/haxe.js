@@ -76,7 +76,7 @@ CodeMirror.defineMode("haxe", function(config, parserConfig) {
     else if (state.reAllowed && (ch == "~" && stream.eat(/\//))) {
       nextUntilUnescaped(stream, "/");
       stream.eatWhile(/[gimsu]/);
-      return ret("regexp", "string-1");
+      return ret("regexp", "string-2");
     }
     else if (ch == "/") {
       if (stream.eat("*")) {
@@ -175,7 +175,7 @@ CodeMirror.defineMode("haxe", function(config, parserConfig) {
         while(cc.length && cc[cc.length - 1].lex)
           cc.pop()();
         if (cx.marked) return cx.marked;
-        if (type == "variable" && inScope(state, content)) return "variable-1";
+        if (type == "variable" && inScope(state, content)) return "variable-2";
     if (type == "variable" && imported(state, content)) return "variable-3";
         return style;
       }
@@ -465,7 +465,7 @@ CodeMirror.defineMode("hxml", function () {
         return "comment";
       }
       if (sol && ch == "-") {
-        var style = "variable-1";
+        var style = "variable-2";
 
         stream.eat(/-/);
 

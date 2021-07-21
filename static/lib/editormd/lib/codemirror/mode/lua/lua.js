@@ -1,7 +1,7 @@
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: http://codemirror.net/LICENSE
 
-// LUA mode. Ported to CodeMirror 1 from Franciszek Wawrzak's
+// LUA mode. Ported to CodeMirror 2 from Franciszek Wawrzak's
 // CodeMirror 1 mode.
 // highlights keywords, strings, comments (no leveling supported! ("[==[")), tokens, basic indenting
 
@@ -134,7 +134,7 @@ CodeMirror.defineMode("lua", function(config, parserConfig) {
       if (style == "variable") {
         if (keywords.test(word)) style = "keyword";
         else if (builtins.test(word)) style = "builtin";
-        else if (specials.test(word)) style = "variable-1";
+        else if (specials.test(word)) style = "variable-2";
       }
       if ((style != "comment") && (style != "string")){
         if (indentTokens.test(word)) ++state.indentDepth;

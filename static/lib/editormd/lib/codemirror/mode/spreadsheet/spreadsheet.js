@@ -69,7 +69,7 @@
           stream.next();
           return "operator";
         case "\\":
-          if (stream.match(/\\[a-z]+/)) return "string-1";
+          if (stream.match(/\\[a-z]+/)) return "string-2";
           else return null;
         case ".":
         case ",":
@@ -93,7 +93,7 @@
           return "number";
         } else if (stream.match(/^[a-zA-Z_]\w*/)) {
           if (stream.match(/(?=[\(.])/, false)) return "keyword";
-          return "variable-1";
+          return "variable-2";
         } else if (["[", "]", "(", ")", "{", "}"].indexOf(peek) != -1) {
           stream.next();
           return "bracket";

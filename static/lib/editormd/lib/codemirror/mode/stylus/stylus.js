@@ -176,13 +176,13 @@
       if (stream.match(/^\$?[a-z][\w-]+\s?=(\s|[\w-'"\$])/i)) {
         stream.backUp(2);
         var cssPropertie = stream.current().toLowerCase().match(/[\w-]+/)[0];
-        return cssProperties[cssPropertie] === undefined ? "variable-1" : "property";
+        return cssProperties[cssPropertie] === undefined ? "variable-2" : "property";
       } else if (stream.match(/\$[\w-\.]+/i)) {
-        return "variable-1";
+        return "variable-2";
       } else if (stream.match(/\$?[\w-]+\.[\w-]+/i)) {
         var cssTypeSelector = stream.current().toLowerCase().match(/[\w]+/)[0];
         if(cssTypeSelectors[cssTypeSelector] === undefined) {
-          return "variable-1";
+          return "variable-2";
         } else stream.backUp(stream.current().length);
       }
 
@@ -230,7 +230,7 @@
           if(!stream.eol())
             return "property";
           else
-            return "variable-1";
+            return "variable-2";
 
         } else if(cssValues[word] !== undefined) {
           // CSS value
@@ -242,8 +242,8 @@
           return "tag";
 
         } else if(word) {
-          // By default variable-1
-          return "variable-1";
+          // By default variable-2
+          return "variable-2";
         }
       }
 
